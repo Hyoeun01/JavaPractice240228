@@ -24,6 +24,8 @@ class Ex_3_Scanner {
 		System.out.println("입력한 나이는 : "+age);
 		
 		
+		
+		
 	}
-
+	
 }
