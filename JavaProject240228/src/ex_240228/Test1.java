@@ -12,6 +12,8 @@ public class Test1 {
 		
 		System.out.println("Hello world!");
 
+		//패키지, 클래스 하나 만들고
+		//콘솔 출력 해보기 >> ex_240228_self > Test_self.java
 	}
 
 }
