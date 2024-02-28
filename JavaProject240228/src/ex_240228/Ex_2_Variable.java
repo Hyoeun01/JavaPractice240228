@@ -92,6 +92,52 @@ public class Ex_2_Variable {
 		
 		shePerson.doDance();
 		shePerson.showInfo();
-	}
+		
+		// 특수문자 출력해보기
 
+		System.out.println("특수문자 \b :"+'\b');
+		
+		//그나마 자주쓰는 이스케이프 문자
+		System.out.println("특수문자 \t :"+'\t'+"샘플");
+		
+		System.out.println("특수문자 \n :"+'\n'+"샘플");
+		System.out.println("특수문자 \f :"+'\f'+"샘플");
+		System.out.println("특수문자 \r :"+'\r'+"샘플");
+		
+		
+		//그나마 자주쓰는 이스케이프 문자
+		System.out.println("특수문자 \\ :"+'\\'+"샘플");
+		
+		
+		// null = 레퍼런스가 할당이 안되었다.
+		// 기본형에서 사용안함.
+		String strTeString = null;
+		//int testNumber = null;
+		
+		// 상수 : final 사용 >> 변하지 않으므로 재할당이 불가능하다
+		final int num8 = 32;
+//		num8= 20;
+		
+		// var의 동적변수할당 > 대기중
+		// 타입을 지정해서 선언하는 방식으로 연습한다
+		
+		// 타입변환 (캐스팅:던지는것)
+		// 작은집 > 큰집 이동시는 문제x
+		// 큰집 > 작은집 이동시에는 ( 기본형에서 ) 값 손실이 일어난다. : 개념적내용, 실무사용x
+		byte byteNumber1=10;
+		long longNumber1 = byteNumber1;
+		System.out.println("타입변환 테스트 - 작은집에서 큰집으로 이동 :"+longNumber1);
+		
+		// 큰집 > 작은집 이동시에 문제생김
+		// 강제로 형을 변환하기 위해서 , 캐스팅연산자 예)(강제로 변환할 형)변수
+		int intNumber2 = -130;
+		byte byteNumber2 = (byte)intNumber2;
+		System.out.println("큰집에서 작은집으로 이동 : "+ byteNumber2);
+		
+		// 레퍼런스에서는 포함관계로 설명을 하는데, 상속에 대해서 설명 후 구체적으로
+		// 부모클래스, 자식클래스 개념 
+		// 자식타입 > 부모타입 변경 or 부모타입 > 자식타입 변경
+		
+		
+	}
 }
