@@ -30,6 +30,14 @@ public class Ex_5_continue {
 
 	// 숫자는 연속해서 5개 입력해주세요 
 	// continue 활용
+	
+	// 디버깅, 자바, 자바스크립트, 파이썬, 플러터 등
+	// 다른 프로그래밍 언어를 공부할 때 , 코드를 분석한다.
+	// 방법 1)줄번호 더블클릭 2)중단점의 시작/끝 설정
+	// 실행 ) f11 디버깅모드 > perspective 모드에서 
+	// 진행방식 : step into(f5)-함수안에 들어가거나 실행 
+	// step over(f6)- 함수안에 들어가지않고 실행만하고 건너뛰기
+	
 	public static void continueAddEx() {
 		Scanner scanner = new Scanner(System.in);
 		// 숫자는 연속해서 5개 입력해주세요
