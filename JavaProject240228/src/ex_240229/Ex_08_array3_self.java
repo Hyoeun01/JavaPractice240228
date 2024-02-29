@@ -2,7 +2,7 @@ package ex_240229;
 
 import java.util.Scanner;
 
-public class Ex_8_array3_self {
+public class Ex_08_array3_self {
 
 	public static void main(String[] args) {
 		

@@ -2,7 +2,7 @@ package ex_240229;
 
 import java.util.Scanner;
 
-public class Ex_3_for {
+public class Ex_03_for {
 
 	public static void main(String[] args) {
 		// while은 계속 실행하도록 하고, 특정 조건에서 빠져나올때 사용한다.
