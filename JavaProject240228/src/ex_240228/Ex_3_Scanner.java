@@ -14,6 +14,7 @@ class Ex_3_Scanner {
 		// 클래스명 : 참조형 변수명 = new 클래스명();
 		// System: import 없이도 사용할 수 있는 내장 기능
 		Scanner scanner = new Scanner(System.in);
+		//system.in이 유저로부터 입력받은 내용을 바이트로 읽고 scanner가 문자열로 변환하거나 숫자로 변환한다
 		
 		//하나의 문자열을 읽을 때 사용하는 메서드 next()
 		String nameString = scanner.next();

@@ -10,7 +10,7 @@ public class Ex_5_Oparator2 {
 		//a의값을 먼저 1 증가시키고 b에 할당
 		int b = ++a;
 		
-		System.out.println("a의 값은 :"+a+" b의 값은: "+b);
+		System.out.println("a : "+a+" b : "+b);
 		
 		int a2 = 1;
 		// b에 할당을 먼저하고 a2의 값을 1증가
@@ -33,6 +33,7 @@ public class Ex_5_Oparator2 {
 		int x = 3;
 		int y = 5;
 		
+		//(조건식)? 참일때 실행 : 거짓일때 실행 ;
 		int result = (x>y)? x : y;
 		System.out.println("result : "+result);
 		

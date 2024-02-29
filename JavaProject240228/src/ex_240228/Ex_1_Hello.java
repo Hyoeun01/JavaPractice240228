@@ -1,5 +1,6 @@
 package ex_240228;
 
+	// class ; 수납도구 1)필드, 2) 메서드를 가지고 있다
 public class Ex_1_Hello {
 	// ctrl+M >코드창만 활성화
 
@@ -18,10 +19,10 @@ public class Ex_1_Hello {
 		return a + b;
 	}
 
-	// void : 리턴값이 없다는 뜻
+	// void : 리턴값이 없다는 뜻 ( 비어있다 )
 	// main : 메소드 명
 	// (String[] args) : 매개변수 정의 부분. 타입이 배열로 정의 되어 있음
-	// String[] : 배열이고, 타입은 String(문자열),vs char(하나의 문자)
+	// String[] : 배열이고, 타입은 String(문자열)vs char(하나의 문자)
 	// main 메소드는 자바의 프로그램의 시작을 의미
 
 	public static void main(String[] args) {
@@ -30,7 +31,12 @@ public class Ex_1_Hello {
 		// TODO Auto-generated method stub
 
 		// 변수타입 변수명 = 값;
-		// 변수타입 종류 1.기본형타입: int, char 등 2.레퍼런스타입:기본형을 제외한 나머지 모든 타입
+		/*
+		 * 변수타입 종류 
+		 * 1.기본형타입: int, char 등 
+		 * 2.레퍼런스타입(참조형):기본형을 제외한 나머지 모든 타입 >> 인스턴스
+		 * 
+		 */
 		// 변수 선언과 할당을 동시에 진행
 
 		int i = 20;
@@ -41,8 +47,10 @@ public class Ex_1_Hello {
 
 		char a = 'a'; // 문자 하나를 표기시 사용. 기호는 작은따옴표 사용
 		String str = "신효은"; // 문자 열 표기시 사용하며, 기본형이 아니다. 기호는 큰 따옴표 사용
-
+		
+		// 전역함수이기때문에 함수이름이 기울어져있다
 		int resultNum = sum(100, 200);
+		
 		// 출력 연습
 		System.out.println("출력연습 : 단축키 syso ctrl+space enter");
 		System.out.println("i 값 : " + i);// 문자열+숫자 : + 연결연산자
@@ -55,6 +63,8 @@ public class Ex_1_Hello {
 		System.out.println("==============================");
 		System.out.print("줄넘김없이 출력1");
 		System.out.print(",줄넘김없이 출력2");
+		
+		
 		// 멀티주석 : ctrl + shift + /
 		// 해제 : ctrl + shift + \
 		// 단축키 1) 자동완성 / 2) 포맷터 > 검색
