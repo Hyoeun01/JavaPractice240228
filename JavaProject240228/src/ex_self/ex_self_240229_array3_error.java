@@ -1,8 +1,8 @@
-package ex_240229;
+package ex_self;
 
 import java.util.Scanner;
 
-public class Ex_08_array3_self {
+public class ex_self_240229_array3_error {
 
 	public static void main(String[] args) {
 		

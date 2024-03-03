@@ -39,11 +39,12 @@ public class Ex_01_if_else_if_switch {
 			}
 			
 		} else if (resultAvgScore >= 60 && resultAvgScore < 70) {
+			if (year != 4) {
 			System.out.println("이름 : " + nameString + " D 등급입니다, 합격");
 		} else {
 			System.out.println("이름 : " + nameString + " 재응시 해주세요. ㅠㅠ");
 		}
-
+		}
 	}
 
 	// 성적을 입력해서, 총점, 평균을 구하는 간단한 함수

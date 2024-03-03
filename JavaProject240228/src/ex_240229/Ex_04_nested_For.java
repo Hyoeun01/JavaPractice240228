@@ -7,7 +7,7 @@ public class Ex_04_nested_For {
 	public static void main(String[] args) {
 		
 
-		//입력받은 수 까지의 구구단 출력하기. (1~9중 숫자 입력하나 정하기)
+		//입력받은 수 까지의 구구단 출력하기. (1~9중 숫자 입력하나 정하기) 
 		
 		
 		while (true) {

@@ -2,7 +2,7 @@ package ex_240229;
 
 import java.util.Scanner;
 
-public class Ex_11_array7 {
+public class Ex_11_array5_two_dimensional_array {
 
 	public static void main(String[] args) {
 		

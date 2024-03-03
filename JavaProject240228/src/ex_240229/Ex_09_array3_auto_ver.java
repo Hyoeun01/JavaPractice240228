@@ -2,7 +2,7 @@ package ex_240229;
 
 import java.util.Scanner;
 
-public class Ex_09_Array_test5 {
+public class Ex_09_array3_auto_ver {
 
 	public static void main(String[] args) {
 		while (true) {
@@ -34,9 +34,7 @@ public class Ex_09_Array_test5 {
 		// 나중에 출력하기 위한 준비물
 		int max = 0;
 		int min = 0;
-		int temp = 0;
 		int sum = 0;
-		int avg = 0;
 
 		for (int i = 0; i < intArray.length; i++) {
 			// 자동으로 0이상 100미만의 랜덤한 숫자 넣기로 변경. 

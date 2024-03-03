@@ -2,7 +2,7 @@ package ex_240229;
 
 import java.util.Scanner;
 
-public class Ex_12_array8 {
+public class Ex_12_array6 {
 
 		public static void main(String[] args) {
 			// 국어, 영어, 수학 3과목의 점수를 입력받아서, 평균, 총점.

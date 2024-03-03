@@ -1,6 +1,6 @@
-package ex_240228_self;
+package ex_self;
 
-public class Test_self2 {
+public class ex_self_240228_2 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

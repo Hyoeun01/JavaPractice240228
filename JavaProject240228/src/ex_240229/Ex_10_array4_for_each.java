@@ -2,8 +2,9 @@ package ex_240229;
 
 import java.util.Scanner;
 
-public class Ex_10_array6 {
+public class Ex_10_array4_for_each {
 
+	// for-each
 	public static void main(String[] args) {
 		int [] array = {1,2,3,4,5};
 		
