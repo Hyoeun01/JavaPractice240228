@@ -50,4 +50,31 @@ public class Idol {
 		
 		
 	}
+	
+	// 오버로드란 : 생성자 메서드에서 매개변수의 정의부분에서 타입이 다른것
+	// 이름은 동일하지만 매개변수의 정의를 다르게 하는것.
+	// 오버로드의 예 : 이름은 동일하지만 매개변수 정의가 다르다.
+	/*
+	 * public Animal() { }
+	 * 
+	 * public Animal(String name, int age) { 
+	 * this.name = name; 
+	 * this.age = age ; 
+	 * }
+	 * 
+	 * 
+	 * public Animal(String name, int age, String soundType) { 
+	 * this.name = name;
+	 * this.age = age ; 
+	 * this.soundType = soundType;
+	 * }
+	 * 
+	 * 
+	 * public Animal(String name, int age, String soundType, String[] likeFoods) {
+	 * this.name = name; 
+	 * this.age = age ; 
+	 * this.soundType = soundType;
+	 * this.favoriteFood = likeFoods; 
+	 * }
+	 */
 }
