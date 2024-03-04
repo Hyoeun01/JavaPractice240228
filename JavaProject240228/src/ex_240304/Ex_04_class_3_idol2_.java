@@ -54,7 +54,7 @@ public class Ex_04_class_3_idol2_ {
 		
 		// 본인의 자식클래스를 사용하고싶다면, 다운캐스팅을 해야한다.
 		// 부모클래스 -> 자식클래스 (다운캐스팅)
-		Idol blackPink = new blackPink(groupNameString, groupMembers, groupAlbums, areaActivity);
+		Idol blackPink = new BlackPink(groupNameString, groupMembers, groupAlbums, areaActivity);
 		blackPink.introduceMembers();
 		blackPink.introduceAlbum();
 		
@@ -64,7 +64,7 @@ public class Ex_04_class_3_idol2_ {
 		// 다형성을 이용해서 사용하지만 실제로는 부모것만 사용할 수 있음.
 		
 		// 부모타입을 다시 자식타입으로 변경을 해서 원래 자식에서 만들었던 활동지역기능을 사용해보기
-		blackPink blackPink2 = (blackPink)blackPink;
+		BlackPink blackPink2 = (BlackPink)blackPink;
 		blackPink2.infoActivityArea();
 		
 		// 다형성을 굳이 사용하는이유? >> 재정의를 할때, 유연한 작업을 위함.

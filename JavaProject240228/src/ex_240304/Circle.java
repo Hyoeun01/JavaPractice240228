@@ -13,6 +13,10 @@ public class Circle { // extends Object 가 생략되어있다.
 		
 	}
 	
+	public Circle(int radius) {
+		this.radius = radius;
+	}
+	
 	public Circle(int radius, String name) {
 		
 		// 모든 클래스는 암묵적으로 Object클래스를 상속받고있다. (super에 마우스대보세요)
@@ -67,6 +71,13 @@ public class Circle { // extends Object 가 생략되어있다.
 	// 클래스의 필드에 접근지정자를 private로 해서 외부에서 접근이 안되는 부분 확인
 	// 따로 접근해서 1) 값을 설정하는방법 2) 값을 가지고 오는 방법
 	
+	
+	// CallByValue 예제
+	public void increase(int m ) {
+		// 지역변수는 해당 메서드에서 호출이 되었을때 변수로 있다가 호출이 끝나면 소멸한다.
+		m = m+1;
+		System.out.println("지역변수 m : "+m);
+	}
 	
 	}
 
