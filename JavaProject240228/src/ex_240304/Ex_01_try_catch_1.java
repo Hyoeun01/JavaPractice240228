@@ -33,6 +33,7 @@ public class Ex_01_try_catch_1 {
 		
 		//try-catch-finally없이 써서 비정상적인 종료 발생
 		//0입력시 java.lang.ArithmeticException
+		
 //		System.out.println("예외 발생 시키기 : x/y(0) = "+x/y);
 		
 		try {
