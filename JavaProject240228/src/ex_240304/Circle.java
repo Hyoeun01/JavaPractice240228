@@ -1,11 +1,35 @@
 package ex_240304;
 
-public class Circle {
+public class Circle { // extends Object 가 생략되어있다.
 	
 	private int radius;
 	private String name;
+	private int price;
 	private final static double PI=3.14;
 	
+	
+	// 기본생성자 만들기
+	public Circle() {
+		
+	}
+	
+	public Circle(int radius, String name) {
+		
+		// 모든 클래스는 암묵적으로 Object클래스를 상속받고있다. (super에 마우스대보세요)
+		// 자식클래스는 반드시 부모클래스가 초기화 된 후에 사용해야한다.
+		super();  // 초기화했다( 생성자 호출 ) >> 앞에서는 생략하고 사용했다
+		this.radius = radius;
+		this.name = name;
+	}
+
+	public Circle(int radius, String name, int price) {
+		
+//		this.radius = radius;
+//		this.name = name;
+		this(radius, name);
+		this.price = price;
+	}
+
 	// 멤버가 private여서 현재 getter함수를 이용해서 해당 필드에 값 접근
 	public int getRadius() {
 		return radius;
