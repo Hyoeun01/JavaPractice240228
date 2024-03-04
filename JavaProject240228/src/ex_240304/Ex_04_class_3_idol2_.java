@@ -63,7 +63,7 @@ public class Ex_04_class_3_idol2_ {
 		
 		// 다형성을 이용해서 사용하지만 실제로는 부모것만 사용할 수 있음.
 		
-		// 부모타입을 다시 자식타입으로 변경을 해서 원래 자식에서 만들었던 활동지역 기능을 사용해보기
+		// 부모타입을 다시 자식타입으로 변경을 해서 원래 자식에서 만들었던 활동지역기능을 사용해보기
 		blackPink blackPink2 = (blackPink)blackPink;
 		blackPink2.infoActivityArea();
 		
