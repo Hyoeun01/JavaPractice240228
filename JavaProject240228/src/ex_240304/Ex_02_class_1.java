@@ -29,9 +29,24 @@ public class Ex_02_class_1 {
 		
 		
 		Animal ani4 = new Animal("ani4", 10);
-		ani4.soundMethod();
 		ani4.introduceMethod();
+		ani4.soundMethod();
 		
+		Animal ani5 = new Animal("강아지", 14, "멍멍");
+		ani5.introduceMethod();
+		ani5.soundMethod();
+		
+		//
+		String[] likeFoodList = {"고기","생선","사료"};
+		Animal ani6 = new Animal("고양이", 5, "야옹",likeFoodList );
+		ani6.introduceMethod();
+		ani6.soundMethod();
+		// 메서드에 인자값을 굳이 넣을 필요가 없다.
+		// 해당클래스의 멤버로 좋아하는 음식 리스트를 받아 해당 속성에 저장한다.
+		// 본인이 받아서 저장해놓은걸 사용하면되므로 this로 대체한다.
+		
+//		ani6.likeFoodList(likeFoodList);
+		ani6.likeFoodList();
 		
 		// 불만사항
 		// 1) class 내부에 또다른 클래스가 있는것 
@@ -42,6 +57,10 @@ public class Ex_02_class_1 {
 		// -> Animal ani3 = new Animal("ani3",10);
 		
 		// 3) 해당 기능들이 각각의 동물의 이름이나, 나이를 각각 출력하는 방법?
+		
+		
+		
+
 		
 		
 	}
