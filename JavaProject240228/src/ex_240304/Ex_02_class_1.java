@@ -1,34 +1,5 @@
 package ex_240304;
 
-// 클래스 정의
-class Animal {
-	// 하나의 클래스에는 각각 한개씩 사용한다
-	// 지금은 예시로 클래스 안에 또다른 클래스 보여주기용도
-	// 파일을 분리한다
-	
-	// 클래스 : 공장, 설계도면 >> 제품 : '인스턴스'라고 부른다
-	
-	// 구성 1) 멤버(변수) 2)메서드(기능)
-	
-	// 멤버
-	// private 사용시 외부접근이 불가능하니 setter/getter로 접근할 수 있게 한다.
-	// 현재는 public으로 변경한다.
-	
-	/*
-	 * private String name ; private int age ;
-	 */
-	
-	public String name ; public int age ;
-	
-	// 메서드 : 1)소개하는 기능 2)소리 기능
-	public void introduceMethod() {
-		System.out.println("안녕하세요! 현재는 더미로 작업중, 곧 동적으로 할 예정");
-	}
-	
-	public void soundMethod() {
-		System.out.println("현재는 더미로 소리를 냅니다. 곧 동적으로 할 예정");
-	}
-}
 
 public class Ex_02_class_1 {
 
@@ -56,9 +27,20 @@ public class Ex_02_class_1 {
 		ani2.introduceMethod();
 		ani2.soundMethod();
 		
+		
+		Animal ani4 = new Animal("ani4", 10);
+		ani4.soundMethod();
+		ani4.introduceMethod();
+		
+		
 		// 불만사항
-		// 1) class 내부에 또다른 클래스가 있는것
+		// 1) class 내부에 또다른 클래스가 있는것 
+		// -> 현재 같은 패키지 내부로 분리했음.(Animal)
+		
 		// 2) 해당 인스턴스 생성시 매번 인스턴스에 닷연산자 사용후 재할당하는부분 >>한번에 하기?
+		// -> 예) 선언시 기본값을 미리 할당하고 생성하기
+		// -> Animal ani3 = new Animal("ani3",10);
+		
 		// 3) 해당 기능들이 각각의 동물의 이름이나, 나이를 각각 출력하는 방법?
 		
 		
