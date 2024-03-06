@@ -1,7 +1,5 @@
 package ex_240306;
 
-import javax.management.remote.SubjectDelegationPermission;
-
 import ex_240304.Idol;
 
 public class Ex_01_class_boygroup_inheritance1_main {
@@ -44,7 +42,7 @@ public class Ex_01_class_boygroup_inheritance1_main {
 		 */
 		
 		// 해당 인스턴스에서 부모메서드만 보인다면, 자식의 메서스도 이용하려면 어떻게해야할까
-		// 다운캐스팅 >> 자식클래스명 레퍼런스명 = 캐스팅연산자 (자식클래스명 ) 부모클래스의 인스턴스;
+		// 다운캐스팅 >> 자식클래스명 레퍼런스명 = 캐스팅연산자 (자식클래스명) 부모클래스의 인스턴스;
 		/*
 		 * Idol test2 = new Ex_01_class_boygroup_inheritance1(null, groupAlbum,groupAlbum); 
 		 * Ex_01_class_boygroup_inheritance1 test21 =

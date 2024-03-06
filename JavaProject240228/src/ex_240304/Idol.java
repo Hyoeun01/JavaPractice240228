@@ -1,7 +1,5 @@
 package ex_240304;
 
-import java.lang.reflect.Member;
-
 //idol클래스 만들고, 해당 클래스 속성에는 그룹명, 그룹인원, 그룹원 이름.
 	// 기능 
 	// 1) 그룹이름소개 

@@ -10,7 +10,7 @@ class A {
 	static int commonNumber;
 	
 	
-	// 매개변수가 1개인 생성자
+	// 매개변수가 2개인 생성자
 	public A(int num, String name) {
 		this.number = num;
 		this.name = name;

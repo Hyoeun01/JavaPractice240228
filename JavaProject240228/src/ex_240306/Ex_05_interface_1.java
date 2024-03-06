@@ -22,7 +22,7 @@ public interface Ex_05_interface_1 {
 	
     public default void introduceInfo() { // 기본메서드
     	System.out.println("기본메서드입니다");
-    	introduceHobby();
+    	introduceHobby(); // private >> 외부에서는 호출할수없으니 기본메서드안에서 호출
     	introduceMember();
     }
     private void introduceHobby() {

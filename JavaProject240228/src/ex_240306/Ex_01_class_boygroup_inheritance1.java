@@ -1,7 +1,5 @@
 package ex_240306;
 
-import javax.management.remote.SubjectDelegationPermission;
-
 import ex_240304.Idol;
 
 public class Ex_01_class_boygroup_inheritance1 extends Idol{
