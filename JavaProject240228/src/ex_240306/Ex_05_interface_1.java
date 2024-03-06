@@ -1,6 +1,6 @@
 package ex_240306;
 
-public interface Ex_05_interface {
+public interface Ex_05_interface_1 {
 
 	// 인터페이스 = 접점. 특정의 표준이나 규격
 	// 예 ) 110v를 220v로 변환하는 '컨버터' , 
@@ -15,8 +15,11 @@ public interface Ex_05_interface {
 	 */
 	
 	// 구성품
-	public final int MAX = 100; // 상수
+	public static final int MAX = 100; // 상수
+	// int MAX = 100; 로만 써도 상관이없다.
 	abstract public void showInfo(); // 추상메소드
+	// void showInfo(); 로만 써도 된다
+	
     public default void introduceInfo() { // 기본메서드
     	System.out.println("기본메서드입니다");
     	introduceHobby();

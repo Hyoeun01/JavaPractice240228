@@ -1,7 +1,7 @@
 package ex_240306;
 
 // 자식클래스에서 구현
-public class Ex_05_interface_subclass_1 implements Ex_05_interface {
+public class Ex_05_interface_subclass_1 implements Ex_05_interface_1 {
 
 	// 강제로 제정의 해줘야함
 	@Override
