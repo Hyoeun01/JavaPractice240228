@@ -1,6 +1,6 @@
-package ex_240228;
+package ex_240306;
 
-public class Test1 {
+public class Ex_04_abstract_Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

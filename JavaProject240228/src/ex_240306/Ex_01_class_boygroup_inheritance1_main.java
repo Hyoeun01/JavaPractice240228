@@ -1,5 +1,7 @@
 package ex_240306;
 
+import javax.management.remote.SubjectDelegationPermission;
+
 import ex_240304.Idol;
 
 public class Ex_01_class_boygroup_inheritance1_main {
@@ -27,6 +29,9 @@ public class Ex_01_class_boygroup_inheritance1_main {
 		= new Ex_01_class_boygroup_inheritance1("연습생 그룹1", boygroup, groupAlbum); 
 		
 		boygroup1.introduceMembers();
+		
+		// 기존에는 부모의 메서드를 사용했지만 자식클래스에서 재정의를 했기때문에 
+		// 자식의 메서드가 우선이된다
 		boygroup1.introduceAlbum();
 		
 		// 부모클래스명 참조형변수 = new 자식클래스명();
@@ -59,5 +64,6 @@ public class Ex_01_class_boygroup_inheritance1_main {
 	// value> 메서드에서 인자값으로 전달시 복사해서 사용하고, 지역변수에서 이용후 소멸함
 	// reference > 참조형으로(레퍼런스, 인스턴스) 메서드에 전달하면, 해당 메모리 위치 주솟값을 재사용하고,
 	// 메서드를 사용후, 소멸하지않는다
-
+	
+	
 }

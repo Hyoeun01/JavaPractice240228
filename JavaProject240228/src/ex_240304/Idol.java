@@ -45,7 +45,7 @@ public class Idol {
 
 	public void introduceAlbum() {
 		for(String album :  this.groupAlbum) {
-			System.out.println("앨범이름은 "+album+"입니다.");
+			System.out.println(" 부모메서드 기능 : 앨범이름은 "+album+"입니다.");
 		}
 		
 		
