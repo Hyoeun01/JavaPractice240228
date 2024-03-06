@@ -12,18 +12,17 @@ public class Ex_07_array2 {
 			intArray[i] = (int) (Math.random() * 100);
 		}
 		
-		// 출력을 하는 함수를 호출. 
-		System.out.println(" ========얕은 복사 예제 ========");
-		System.out.println(" ========intArray ========");
-		showArrayElement(intArray);
-		// 얕은 복사, 예제, 원본의 값이 변경되면, copyArray도 영향을 받는다.
-		System.out.println(" ========copyArray1 ========");
-		
+		/*
+		 * // 출력을 하는 함수를 호출. System.out.println(" ========얕은 복사 예제 ========");
+		 * System.out.println(" ========intArray ========"); showArrayElement(intArray);
+		 * // 얕은 복사, 예제, 원본의 값이 변경되면, copyArray도 영향을 받는다.
+		 * System.out.println(" ========copyArray1 ========");
+		 */
 		// intArray 가 가리키는 메모리 위치의 주솟값만 복사를 해서, 
 		// 동일한 값이 들어가 있는 위치만 공유를 하는 것. 
 		
 		int copyArray1[] = intArray;
-		showArrayElement(copyArray1);
+//		showArrayElement(copyArray1);
 		// 얕은 복사 테스트 중, 값을 변경시 영향 받는것 보여주기. 
 //		intArray[0] = 1000;
 		

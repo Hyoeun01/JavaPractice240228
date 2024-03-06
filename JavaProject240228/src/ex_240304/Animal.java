@@ -99,7 +99,7 @@ public class Animal {
 
 		public void likeFoodList() {
 			for(int i = 0 ; i <this.favoriteFood.length; i++ ) {
-				System.out.println("좋아하는 음식 : " + i + " 번: " + this.favoriteFood[i]);
+				System.out.println("좋아하는 음식 : " + (i+1) + " 번: " + this.favoriteFood[i]);
 			}
 			
 		

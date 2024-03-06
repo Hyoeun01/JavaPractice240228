@@ -30,7 +30,7 @@ public class Circle { // extends Object 가 생략되어있다.
 		
 //		this.radius = radius;
 //		this.name = name;
-		this(radius, name);
+		this(radius, name); // 누구를 호출? >>
 		this.price = price;
 	}
 
