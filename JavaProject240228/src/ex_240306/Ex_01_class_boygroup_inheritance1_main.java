@@ -1,5 +1,7 @@
 package ex_240306;
 
+import ex_240304.Idol;
+
 public class Ex_01_class_boygroup_inheritance1_main {
 
 	public static void main(String[] args) {
@@ -26,6 +28,24 @@ public class Ex_01_class_boygroup_inheritance1_main {
 		
 		boygroup1.introduceMembers();
 		boygroup1.introduceAlbum();
+		
+		// 부모클래스명 참조형변수 = new 자식클래스명();
+		// 참조형변수.[  접근가능한 메서드는 부모꺼만  ]
+		
+		// 작은집 >>> 큰집(업캐스팅)
+		/*
+		 * Idol test1 = new Ex_01_class_boygroup_inheritance1(null, groupAlbum,groupAlbum); 
+		 * test1.
+		 */
+		
+		// 해당 인스턴스에서 부모메서드만 보인다면, 자식의 메서스도 이용하려면 어떻게해야할까
+		// 다운캐스팅 >> 자식클래스명 레퍼런스명 = 캐스팅연산자 (자식클래스명 ) 부모클래스의 인스턴스;
+		/*
+		 * Idol test2 = new Ex_01_class_boygroup_inheritance1(null, groupAlbum,groupAlbum); 
+		 * Ex_01_class_boygroup_inheritance1 test21 =
+		 * (Ex_01_class_boygroup_inheritance1) test21;
+		 */
+		
 	}
 	
 	// 접근지정자
