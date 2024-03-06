@@ -1,6 +1,5 @@
 package ex_240306;
 
-import ex_240228.Test1;
 
 public class Ex_05_interface_main_1 {
 
