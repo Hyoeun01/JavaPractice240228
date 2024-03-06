@@ -6,8 +6,6 @@ package ex_240306;
 // 추상메서드 : 메서드의 선언만하고 몸통(구현체)은없는 메서드.
 // abstract public void introduceAlbum();
 
-import java.lang.reflect.Member;
-
 //idol클래스 만들고, 해당 클래스 속성에는 그룹명, 그룹인원, 그룹원 이름.
 	// 기능 
 	// 1) 그룹이름소개 
@@ -19,9 +17,6 @@ import java.lang.reflect.Member;
 
 // 기존클래스가 추상클래스로 변경된다.
  	
-
-
-
 abstract public class Idol_abstract {
 	
 	public String groupName;
@@ -50,8 +45,7 @@ abstract public class Idol_abstract {
 		for(String album :  this.groupAlbum) {
 			System.out.println(" 부모메서드 기능 : 앨범이름은 "+album+"입니다.");
 		}
-		
-		
+			
 	}
 	
 	abstract public void introduceActivityArea();

@@ -20,7 +20,6 @@ public class Ex_04_abstract_ extends Idol_abstract {
 
 	@Override
 	public void introduceActivityArea() {
-		// TODO Auto-generated method stub
 		
 	}
 
