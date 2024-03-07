@@ -4,6 +4,13 @@ import java.util.Scanner;
 
 public class Main2_console {
 
+	// 등록받을 스포츠를 담을 배열을 만들기
+	// 단점 > 크기가 고정되어서 늘리거나 줄일수 없다
+	// 최초에 스포츠를 등록할때 개수를 지정한다.
+	
+	static Sports [] sportsArray;
+	
+	
 	public static void main(String[] args) {
 		
 		//스포츠 등록하기  : 메서드로 만들기
@@ -25,6 +32,13 @@ public class Main2_console {
 			} else if(checkNum == 1) {
 				// 스포츠를 등록하는메서드
 				System.out.println("스포츠 등록하기");
+				System.out.println("등록할 스포츠 개수를 입력하세요 (1~5 입력)>>");
+				int sportEnrollNum = scanner.nextInt();
+				sportsArray = new Sports[sportEnrollNum];
+				
+				InputFunctions inputsports = new InputFunctions();
+				SubSports sports = null;
+				
 				
 			} else if(checkNum == 2) {
 				System.out.println("스포츠 검색하기");
