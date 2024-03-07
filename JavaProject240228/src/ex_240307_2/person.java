@@ -26,11 +26,18 @@ public class person {
 	
 	// equals 재정의해서 확인해보기 >> 이름이 같으면 같다
 	public boolean equals(Object obj) {
-		person p = (person)obj;
-		// 문자열 비교 설명후에 다시할게요
-		// if(p.name equals(obj))
+
+		// 담을때 모델 타입을 정해서 담아두면 꺼낼때 편하다
+		if (obj instanceof person) {
+			person p = (person) obj;
+			if (p.name.equals(name)) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		return false;
 	}
-	
 	
 
 
@@ -39,17 +46,24 @@ public class person {
 		person person1 = new person("사람1",20);
 		person person2 = new person("사람2",20);
 		
+		person person3 = new person("사람",20);
+		person person4 = new person("사람",20);
+		
+		
 		
 		System.out.println("person1 : "+person1.hashCode());
 		System.out.println("person2 : "+person2.hashCode());
 		
 		System.out.println("person1 : "+person1.toString());
 		System.out.println("person2 : "+person2.toString());
+		System.out.println("============================================");
 		// 실제 데이터를 이용해서 작업을함
 		// 비즈니스 로직 > 해당 데이터로 작업을 하지
 		// 메모리 위치의 주솟값이 같은지의 여부가 중요하지가않다
 		// 왜? > 메모리 관리를 가비지 컬렉터가 자동으로 하기때문에
 		
+		System.out.println("person1. equals(person2) : " +person1. equals(person2));
+		System.out.println("person3. equals(person4) : " +person3. equals(person4));
 
 	}
 
