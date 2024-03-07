@@ -2,10 +2,24 @@ package ex_240307;
 
 import java.util.Scanner;
 
+// 등록한 스포츠를 담을 배열을 만들면?
+
+// 스포츠 해당 종목들이 각각의 인스턴스.
+// Sports라는 타입으로 배열을 선언.
+// 이 배열의 요소로 담기
+// 담아놓은 배열에서 검색을 하거나 출력
+
 public class InputFunctions {
 	
 	// 1. 스포츠 등록하는 기능
-	public static void enrollSports() {
+	
+	//해당 등록하는 함수에 입력타입으로 스포츠타입의 레퍼런스변수(인스턴스)
+	// 메서드 입력값
+	// 들어갈때는 빈 인스턴스인데
+	// 메서드 반환값
+	// 나올때는 인스턴스에 콘솔에서 입력한 데이터를 적용한 인스턴스가 나온다
+	
+	public static Sports enrollSports(Sports sports) {
 		
 		//콘솔로 입력받는 기능
 		Scanner scanner = new Scanner(System.in);
@@ -40,6 +54,7 @@ public class InputFunctions {
 		}
 		
 		// 콘솔에서 입력 받은 데이터를 우리가 만든 클래스에 적용하기
+		return sports;
 	}
 	
 	
