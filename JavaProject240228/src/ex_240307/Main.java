@@ -58,6 +58,17 @@ public class Main {
 		Util.showSeason(baseball, 1);
 		Util.showDate();
 		
+		Baseball baseball2 = (Baseball)baseball;
+		baseball2.showInOutPlace(2);
+		
+		String [] baseballMembers = {"효은1","효은2","효은3","효은4","효은5"}; 
+		baseball2.showTeamNameOrMembers(baseballMembers);
+		
+		String [] baseballItems = {"배트","글러브","헬멧","무릎보호구"};
+		baseball2.showUseItems(baseballItems);
+		
+		System.out.println("======================");
+		
 	}
 
 }
