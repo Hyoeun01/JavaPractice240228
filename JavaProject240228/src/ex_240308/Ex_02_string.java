@@ -100,7 +100,26 @@ public class Ex_02_string {
 		String [] resultArray2 = str12.split(",");
 		showArray(resultArray1);
 		showArray(resultArray2);
+		System.out.println();
 		
+		// String subString(int beginIndex) :beginIndex부터 시작되는 문자열을 반환
+		// String subString(int beginIndex, int lastIndex) : begin~last미만 까지의 문자열 반환
+		str10.substring(2);
+		System.out.println("str10.substring(2) : "+str10.substring(2));
+		System.out.println("str10.substring(1,3) : "+str10.substring(1,3));
+		
+		// String trim() : 문자열 앞뒤의 공백을 제거함
+		String str13 = "   HELLO   ";
+		System.out.println("str13.length: "+str13.length());
+		System.out.println("str13 : "+str13);
+		System.out.println("str13.trim().length() : "+str13.trim().length());
+		System.out.println("str13.trim() : "+str13.trim());	
+		
+		// trim() 응용
+		// 1) 검색시 복붙할때 공백이 섞여있음
+		// 대소문자 상관없이 검색
+		// 2) 입력된 파일의 확장자를 기준으로 파일의 종류(이미지,영상,텍스트 등) 분리
+		// abc.jpg, def.jpeg, ghi.png, jkl.mp3 등  >> 확장자분리
 		
 	}
 	
