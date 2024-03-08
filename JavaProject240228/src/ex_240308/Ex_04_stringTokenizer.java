@@ -18,7 +18,27 @@ public class Ex_04_stringTokenizer {
 			String token = st.nextToken();
 			System.out.println(token);
 		}
-
+		
+		String query3 = "\"apple\":\"사과\",\"banana\":\"바나나\",\"orange\":오렌지\"";
+		System.out.println(query3);
+		StringTokenizer st3 = new StringTokenizer(query3, ",");
+		
+		int n3 = st3.countTokens();
+		System.out.println("토큰개수 = "+n3);
+		while(st3.hasMoreTokens())
+		{
+			String token = st3.nextToken();
+			System.out.println(token);
+		}
+		
 	}
+	
+	// 전역메소드 , 입력 : StringTokenizer 타입, 단순 출력만
+	
+	
+		
+	}
+	
+	
 
-}
+

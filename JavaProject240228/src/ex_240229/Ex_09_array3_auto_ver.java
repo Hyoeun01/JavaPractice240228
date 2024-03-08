@@ -7,7 +7,7 @@ public class Ex_09_array3_auto_ver {
 	public static void main(String[] args) {
 		while (true) {
 			Scanner scanner = new Scanner(System.in);
-			System.out.println("양수 5개로 자동생성, 최소,최대,평균,총합 프로그램");
+			System.out.println("양수 6개로 자동생성, 최소,최대,평균,총합 프로그램");
 			System.out.println("1번: 프로그램 자동실행 , 0번: 종료시 누르기 >>");
 			int number = scanner.nextInt();
 
@@ -21,7 +21,7 @@ public class Ex_09_array3_auto_ver {
 			} else {
 				// number == 1 인경우, 양수만 5개 더하는 프로그램.
 				// 자동으로 5개 양수값을 갖는 배열 만드는 함수 호출
-				int array[] = new int[5];
+				int array[] = new int[6];
 				// 만들어진 배열을, 집계하는 함수를 호출
 				showAggregation(array);
 			}
@@ -38,7 +38,7 @@ public class Ex_09_array3_auto_ver {
 
 		for (int i = 0; i < intArray.length; i++) {
 			// 자동으로 0이상 100미만의 랜덤한 숫자 넣기로 변경. 
-			intArray[i] = (int)(Math.random()*100 +1);
+			intArray[i] = (int)(Math.random()*45 +1);
 			min = intArray[0];
 			// 최대값
 
