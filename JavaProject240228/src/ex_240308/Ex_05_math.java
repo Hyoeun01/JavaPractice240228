@@ -3,8 +3,8 @@ package ex_240308;
 import java.util.Random;
 
 public class Ex_05_math {
-	
 	static int[] pickedNumber;
+	static int countCheck;
 
 	public static void main(String[] args) {
 		// Math , 수학 관련된 기능을 많이 제공하고,
@@ -23,7 +23,7 @@ public class Ex_05_math {
 		Random r = new Random();
 		// 범위가 0이상 3미만
 		int randomNum = r.nextInt(3);
-		System.out.println("Random으로 난수 출력: " + randomNum);
+		System.out.println("Random으로 출력 난수: " + randomNum);
 
 		// 로또 번호가 : 1 ~ 45
 		// 6개로
@@ -35,7 +35,7 @@ public class Ex_05_math {
 		// 난수 생성 메서드로 호출후, 배열에 담기
 		// 그리고, 배열에 이미 숫자가 있다면, 분기문으로 처리하고,
 		// 중복없이 , 번호 6개 뽑을 때 까지, 반복 처리 : while
-		int countCheck = 0;
+		countCheck = 0;
 		int[] tempInt = new int[6];
 		while (true) {
 			if (countCheck == 6) {
@@ -47,97 +47,23 @@ public class Ex_05_math {
 				System.out.println("종료합니다.");				
 				break;
 			} else if (countCheck == 0) {
-
-				int pickNumber = generateRandomNumber();
-				// 중복 검사. true 중복, false 중복 아님.
-				while (true) {
-					if (!checkNumber(pickNumber, tempInt)) {
-						tempInt[countCheck] = pickNumber;
-						countCheck++;
-						break;
-
-					}
-				}
+				doWork(tempInt,countCheck);
 			} else if (countCheck == 1) {
-				int pickNumber = generateRandomNumber();
-				// 중복 검사. true 중복, false 중복 아님.
-				while (true) {
-					if (!checkNumber(pickNumber, tempInt)) {
-						tempInt[countCheck] = pickNumber;
-						countCheck++;
-						break;
-
-					}
-				}
-
+				doWork(tempInt,countCheck);
 			} else if (countCheck == 2) {
-				int pickNumber = generateRandomNumber();
-				// 중복 검사. true 중복, false 중복 아님.
-				while (true) {
-					if (!checkNumber(pickNumber, tempInt)) {
-						tempInt[countCheck] = pickNumber;
-						countCheck++;
-						break;
-
-					}
-				}
-
+				doWork(tempInt,countCheck);
 			}
-
 			else if (countCheck == 3) {
-				int pickNumber = generateRandomNumber();
-				// 중복 검사. true 중복, false 중복 아님.
-				while (true) {
-					if (!checkNumber(pickNumber, tempInt)) {
-						tempInt[countCheck] = pickNumber;
-						countCheck++;
-						break;
-
-					}
-				}
-
+				doWork(tempInt,countCheck);
 			}
-			
 			else if (countCheck == 4) {
-				int pickNumber = generateRandomNumber();
-				// 중복 검사. true 중복, false 중복 아님.
-				while (true) {
-					if (!checkNumber(pickNumber, tempInt)) {
-						tempInt[countCheck] = pickNumber;
-						countCheck++;
-						break;
-
-					}
-				}
-
+				doWork(tempInt,countCheck);
 			}
-			
 			else if (countCheck == 5) {
-				int pickNumber = generateRandomNumber();
-				// 중복 검사. true 중복, false 중복 아님.
-				while (true) {
-					if (!checkNumber(pickNumber, tempInt)) {
-						tempInt[countCheck] = pickNumber;
-						countCheck++;
-						break;
-
-					}
-				}
-
+				doWork(tempInt,countCheck);
 			}
-			
 			else if (countCheck == 6) {
-				int pickNumber = generateRandomNumber();
-				// 중복 검사. true 중복, false 중복 아님.
-				while (true) {
-					if (!checkNumber(pickNumber, tempInt)) {
-						tempInt[countCheck] = pickNumber;
-						countCheck++;
-						break;
-
-					}
-				}
-
+				doWork(tempInt,countCheck);
 			}
 		} // while 문 종료 지점. 
 
@@ -162,6 +88,21 @@ public class Ex_05_math {
 		}
 		return numCheck;
 
+	}
+	
+	// 반복 작업 메서드로 만들기. 
+	public static void doWork(int [] tempInt, int num) {
+		int pickNumber = generateRandomNumber();
+		// 중복 검사. true 중복, false 중복 아님.
+		while (true) {
+			if (!checkNumber(pickNumber, tempInt)) {
+				tempInt[num] = pickNumber;
+				countCheck++;
+				break;
+
+			}
+		}
+		
 	}
 
 }
