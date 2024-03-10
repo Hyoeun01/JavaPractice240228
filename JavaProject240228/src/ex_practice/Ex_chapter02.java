@@ -2,7 +2,7 @@ package ex_practice;
 
 import java.util.Scanner;
 
-public class Ex_chapter2 {
+public class Ex_chapter02 {
 
 	public static void main(String[] args) {
 
@@ -213,14 +213,32 @@ public class Ex_chapter2 {
 				int first = n/10;
 				int second = n%10;
 				
-				if (n>=10) {
-				if (first % 3 == 0 && second % 3 == 0) {System.out.println("박수짝짝");}
-				if (first % 3 != 0 && second % 3 == 0) {System.out.println("박수짝");}
-				if (first % 3 == 0 && second % 3 != 0) {System.out.println("박수짝");}
-				if (first % 3 != 0 && second % 3 != 0) {System.out.println("박수없음");} }
-				else { if (second %3 == 0) {System.out.println("박수짝");}
-				else {System.out.println("박수없음");}	
+				if(n<10) {
+					if(second%3 == 0) {
+						System.out.println("박수짝");
+					}else {
+						System.out.println("박수없음");
+					}
+					
 				}
+				else {
+					if(first%3==0 && second%3==0 && second !=0) {
+						System.out.println("박수짝짝");
+					}
+					else if(first % 3 != 0 && second % 3 == 0 && second !=0) {
+						System.out.println("박수짝");
+					}
+					else if(first % 3 == 0 && second % 3 != 0 && second !=0) {
+						System.out.println("박수짝");
+					}
+					else if(first % 3 == 0 && second == 0) {
+						System.out.println("박수짝");
+					}
+					else {
+						System.out.println("박수없음");
+					}
+				}
+				
 			break;	
 
 			}
