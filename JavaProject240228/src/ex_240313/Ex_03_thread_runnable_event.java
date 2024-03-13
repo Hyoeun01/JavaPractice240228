@@ -77,6 +77,7 @@ public class Ex_03_thread_runnable_event extends JFrame implements Runnable {
 			try {
 				Thread.sleep(30);
 			} catch (Exception e) {
+				System.out.println("interrupt 호출 당해서 종료");
 				return;
 			}
 			// getX() :부모클래스에서 제공해주는 해당창의 x좌표 가져오기
