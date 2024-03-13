@@ -23,6 +23,7 @@ class MyLabel extends JLabel{
 	MyLabel(int maxBarSize){
 		this.maxBarSize = maxBarSize;
 	}
+	// getter 만들어서 private 접근
 	
 	// 그림을 그려주는 기능 부분
 	// paintComponent 메서드 > 매개변수 : Graphics 타입의 레퍼런스 정의
@@ -49,6 +50,11 @@ class MyLabel extends JLabel{
 	// 두가지가 섞이면 내가 원하는 기능이 구현이안됨
 	// (버튼을 눌렀는데 막대가 감소한다거나)
 	
+	// getter 만들어서 private 접근. 막대바 사이즈 가져오기
+	public int getBarSize() {
+		return barSize;
+	}
+
 	// 키 입력시 분홍색 막대 채우는 기능
 	synchronized void fill() {
 		// 처음이거나 가만히있을경우
@@ -142,6 +148,7 @@ public class Ex_05_wait_notify extends JFrame {
 		container.add(bar);
 		
 		// 추가작업해보기 : barsize의 수치를 표현하는 패널 붙이기 작업
+		JLabel barSizeLabel = new JLabel("바크기 : "+bar.getBarSize());
 		
 		// 이벤트 핸들러 추가
 		// 키 입력시 채우는 기능 넣기
