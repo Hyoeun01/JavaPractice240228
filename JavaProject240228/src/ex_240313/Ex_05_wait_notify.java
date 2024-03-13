@@ -1,12 +1,17 @@
 package ex_240313;
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Graphics;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 // 화면 ui담당 클래스 ------3
-class MyLabel extends JFrame{
+// 막대만 그리는 클래스 이므로 실제 전체창은 메인에서 그린다
+class MyLabel extends JLabel{
 	// jframe : 자바버전의 화면그리는 도구 모음집
 	// 막대의 수치를 수치를 담을 변수 : 전체가 100
 	// 해당 막대의 수치가 커질수록, 분홍색(마젠타색)으로 채울예정
@@ -105,10 +110,67 @@ class ConsumerThread extends Thread {
 }
 
 // 실행용 클래스 ----1
-public class Ex_05_wait_notify {
+// 부모의 윈도우창 의미
+// MyLabel 클래스 > 막대의 그림만 의미
+// MyLabel을 윈도우창에 붙일 예정
+public class Ex_05_wait_notify extends JFrame {
+	
+	// 사용할 막대 인스턴스 생성하기 // 최대크기는 임의로 100으로 설정
+	private MyLabel bar = new MyLabel(100);
 
-	public static void main(String[] args) {
+	// 실행할 클래스에서 생성자 호출
+	Ex_05_wait_notify(){
+		setTitle("분홍색 막대 채우기_wait_notify");
+		//창닫기 기능
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// 패널요소 배치(정렬방법)
+		Container container = new Container();
+		// 요소의 정렬기능이 없음
+		// 단순히 막대바 하나만 있으면 되기때문에
+		container.setLayout(null);
+		// 기본 막대의 배경색 : 오렌지
+		bar.setBackground(Color.orange);
+		// jlabel의 기본이 투명도가있어서, 메서드 호출해서 지정
+		bar.setOpaque(true);
+		//창으로부터 가로 20, 세로 50만큼 떨어짐
+		bar.setLocation(20,50);
+		// 바의 크기
+		bar.setSize(300, 20);
 		
+		// 창에 막대 붙이기 작업
+		container.add(bar);
+		
+		// 이벤트 핸들러 추가
+		// 키 입력시 채우는 기능 넣기
+		// new keyadapter : 익명클래스. 이름이 없고, 주로 1회용으로 사용. 
+		container.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				super.keyPressed(e);
+				// 키입력으로 분홍색 막대를 1씩 채우는역할
+				bar.fill();
+			}
+		});
+		setSize(350, 200);
+		setVisible(true);
+		
+		// 부모 창에서의 옵션. 포커스
+		// 요소의 집중 > 입력란에 커서가 깜박이는 것처럼 해당 요소를 가리키고 있다.
+		container.setFocusable(true);
+		container.requestFocus(); // 막대가 그려질때마다 해당 창을 봐달라는 뜻
+		
+		// 스레드 동작시키기
+		ConsumerThread thread = new ConsumerThread(bar);
+		// 스레드 호출
+		thread.start();
+		
+	}
+	
+	public static void main(String[] args) {
+		// 메인 클래스의 기본 생성자 호출을 바로함
+		// 원래는 인스턴스명에 담아서 호출해야하지만
+		// >> Ex_05_wait_notify test = new Ex_05_wait_notify();
+		new Ex_05_wait_notify();
 
 	}
 
