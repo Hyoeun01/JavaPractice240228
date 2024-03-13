@@ -8,7 +8,7 @@ public class NumberGame {
 		Scanner scanner = new Scanner(System.in);
 
 		System.out.println("=== 숫자맞추기 게임을 시작합니다. ===");
-		int x = (int) (Math.random() * 3 + 1);
+		int x = (int) (Math.random() * 100 + 1);
 
 		System.out.println("컴퓨터가 숫자를 생각했습니다.");
 

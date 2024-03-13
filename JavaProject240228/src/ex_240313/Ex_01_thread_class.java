@@ -84,7 +84,7 @@ public class Ex_01_thread_class {
 		
 		System.out.println("tt.getId() : "+tt.getId());
 		System.out.println("tt.getName() : "+tt.getName());
-		System.out.println("tt.getPriority() : "+tt.getPriority());
+		System.out.println("tt.getPriority() : "+tt.getPriority()); // 숫자가 높을수록 우선순위가 높다
 		System.out.println("tt.getState() : "+tt.getState());
 		System.out.println("tt.currentThread().getName() : "+tt.currentThread().getName());
 		
