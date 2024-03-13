@@ -56,6 +56,7 @@ class DateTimer extends Thread{
 		}
 	}
 }
+
 public class Ex_01_thread_class {
 
 	public static void main(String[] args) {
@@ -81,7 +82,15 @@ public class Ex_01_thread_class {
 		tt.start();
 		// run메서드 동작
 		
-		// 두번재 스레드 동작하기
+		System.out.println("tt.getId() : "+tt.getId());
+		System.out.println("tt.getName() : "+tt.getName());
+		System.out.println("tt.getPriority() : "+tt.getPriority());
+		System.out.println("tt.getState() : "+tt.getState());
+		System.out.println("tt.currentThread().getName() : "+tt.currentThread().getName());
+		
+		
+		
+		// 두번째 스레드 동작하기
 		DateTimer dt = new DateTimer();
 		dt.start();
 
