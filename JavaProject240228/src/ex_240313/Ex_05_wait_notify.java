@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 
 // 화면 ui담당 클래스 ------3
 // 막대만 그리는 클래스 이므로 실제 전체창은 메인에서 그린다
-class MyLabel extends JLabel{
+class MyLabel1 extends JLabel{
 	// jframe : 자바버전의 화면그리는 도구 모음집
 	// 막대의 수치를 수치를 담을 변수 : 전체가 100
 	// 해당 막대의 수치가 커질수록, 분홍색(마젠타색)으로 채울예정
@@ -20,8 +20,11 @@ class MyLabel extends JLabel{
 	private int maxBarSize;
 	
 	// 생성자
-	MyLabel(int maxBarSize){
+	MyLabel1(int maxBarSize){
 		this.maxBarSize = maxBarSize;
+	}
+	public void MyLabel1(int maxBarSize2) {
+		// TODO Auto-generated constructor stub
 	}
 	// getter 만들어서 private 접근
 	
@@ -89,11 +92,11 @@ class MyLabel extends JLabel{
 
 
 // 스레드 담당 클래스 ------2
-class ConsumerThread extends Thread {
+class ConsumerThread1 extends Thread {
 	// 막대 그림을 그려주는 인스턴스
-	private MyLabel barLabel;
+	private MyLabel1 barLabel;
 	
-	ConsumerThread(MyLabel barLabel){
+	ConsumerThread1(MyLabel1 barLabel){
 		// 스레드 담당 클래스에 막대 인스턴스 넘겨주기
 		this.barLabel=barLabel;
 	}
@@ -122,7 +125,7 @@ class ConsumerThread extends Thread {
 public class Ex_05_wait_notify extends JFrame {
 	
 	// 사용할 막대 인스턴스 생성하기 // 최대크기는 임의로 100으로 설정
-	private MyLabel bar = new MyLabel(100);
+	private MyLabel1 bar = new MyLabel1(100);
 
 	// 실행할 클래스에서 생성자 호출
 	Ex_05_wait_notify(){
