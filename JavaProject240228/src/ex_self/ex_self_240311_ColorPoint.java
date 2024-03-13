@@ -1,4 +1,4 @@
-package ex_240311;
+package ex_self;
 
 class Point{
 	
@@ -23,23 +23,23 @@ class Point{
 	
 }
 
-public class ColorPoint extends Point {
+public class ex_self_240311_ColorPoint extends Point {
 
 	private String color;
 	private int i, j;
 
-	public ColorPoint(int x, int y) { 
+	public ex_self_240311_ColorPoint(int x, int y) { // 부모필드의 Point 초기화
 		super(x, y);
-		this.i = x; 
-		this.j = y; 
+		this.i = x; // ColorPoint 클래스의 멤버 변수인 i와 j를 초기화
+		this.j = y; // ColorPoint 클래스의 추가적인 필드를 초기화
 	}
 
-	public ColorPoint(int i, int j, String color) { 
+	public ex_self_240311_ColorPoint(int i, int j, String color) { // 매개변수가 3개인 생성자
 		this(i, j);
 		this.color = color;
 	}
 
-	public void colorpoint(String color) { 
+	public void colorpoint(String color) { // 색을 변경하는 생성자 설정
 		this.color = color;
 	}
 	
@@ -49,7 +49,7 @@ public class ColorPoint extends Point {
 	
 	
 	public static void main(String[] args) {
-		ColorPoint cp = new ColorPoint(5,5,"YELLOW");
+		ex_self_240311_ColorPoint cp = new ex_self_240311_ColorPoint(5,5,"YELLOW");
 		cp.move(10, 20); // setPoint
 		cp.colorpoint("GREEN"); // setColor
 		cp.show();

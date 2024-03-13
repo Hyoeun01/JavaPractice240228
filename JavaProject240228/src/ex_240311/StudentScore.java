@@ -16,18 +16,21 @@ public class StudentScore {
 			System.out.print((i + 1) + "번 학생: ");
 			
 			for (int j = 0; j < score[i].length; j++) {
+				
 				sum = sum + score[i][j];
 				
 				if(score[i][j] != 100) { //줄맞춤
 				System.out.print("  "+score[i][j] + "   ");
-				} else {System.out.print(" "+score[i][j] + "   "); }
+				
+				} else {
+					System.out.print(" "+score[i][j] + "   ");
+					}
 			}
-			Double avg = sum / 3.0; // 소수점을 출력하기 위해서 double형 사용
+			Double avg = sum / 3.0; 
 
 			System.out.println(" "+ sum + "   " + Math.floor(avg));
-			// math.floor() : 소수점을 버리는함수
-			// math.ceil() : 소수점을 올리는함수
-			// math.round() : 소수점을 반올림하는 함수
+			
+			
 		}
 	}
 
