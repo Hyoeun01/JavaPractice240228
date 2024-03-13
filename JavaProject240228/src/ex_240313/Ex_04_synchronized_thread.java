@@ -5,7 +5,11 @@ import javax.management.loading.PrivateClassLoader;
 // 공유 프린터 역할하는 클래스
 
 class SharedPrinter {
-	public void print(String text) {
+	// 문제점 > 공유프린터에 순서없이 각 스레드가 모두 이용해서 발생했음
+	// 해결법 > 순서를 지키기위한 synchronized 이용
+	// 결론 : 각 스레드가 순서를 지켜서 실행이된다.
+	// 화면상에는 영어먼저, 한글이 나중에 출력된다
+	synchronized public void print(String text) {
 		for (int i = 0; i<text.length(); i++) {
 			System.out.print(text.charAt(i));
 			System.out.println();
