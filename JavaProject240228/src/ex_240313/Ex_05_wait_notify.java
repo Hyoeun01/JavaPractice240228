@@ -27,12 +27,12 @@ class MyLabel extends JLabel{
 	// 그림을 그려주는 기능 부분
 	// paintComponent 메서드 > 매개변수 : Graphics 타입의 레퍼런스 정의
 	// 분홍색 바의 수치가 증가하면 수치에 맞게끔 상태바가 그림을 그려주는 역할.
-	
+	// repaint 호출시 이 아래가 호출된다
 	public void paintComponent(Graphics g) {
 		// 그림을 그릴때 부모의 기능을 재정의해서 사용예정
-	super.paintComponents(g);
+	super.paintComponent(g);
 	// 그리려는 막대의 색 설정
-	g.setColor(Color.magenta);
+	g.setColor(Color.MAGENTA);
 	
 	// 막대의 전체사이즈의 1/100 만큼씩 그리는 수치
 	int width = (int)(((double)this.getWidth())/maxBarSize*barSize);
@@ -66,7 +66,7 @@ class MyLabel extends JLabel{
 		repaint(); // 분홍색 막대를 그리기
 		notify(); // wait로 대기중인 메소드를 깨워서 동작시키기
 	}
-	public void consume() {
+	synchronized public void consume() {
 		if(barSize==0) {
 			try {
 				//키 입력이 없으면 기다리기
@@ -124,7 +124,8 @@ public class Ex_05_wait_notify extends JFrame {
 		//창닫기 기능
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// 패널요소 배치(정렬방법)
-		Container container = new Container();
+		// 틀린거 수정1
+		Container container = getContentPane();
 		// 요소의 정렬기능이 없음
 		// 단순히 막대바 하나만 있으면 되기때문에
 		container.setLayout(null);
@@ -139,6 +140,8 @@ public class Ex_05_wait_notify extends JFrame {
 		
 		// 창에 막대 붙이기 작업
 		container.add(bar);
+		
+		// 추가작업해보기 : barsize의 수치를 표현하는 패널 붙이기 작업
 		
 		// 이벤트 핸들러 추가
 		// 키 입력시 채우는 기능 넣기
