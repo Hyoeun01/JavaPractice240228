@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 public class Ex_06_FileIO_file_byteArray_output {
+	
+	// 활용 : 원본 이미지를 그대로 사용하지않고 썸네일이나 특정크기에 맞게 압축해서 재사용함
 
 	public static void main(String[] args) {
 		// 이미지 복사하기. 바이트로 읽어서 쓸 때 1byte가 아닌 특정 배열크기만큼씩 쓰기
