@@ -2,9 +2,8 @@ package ex_240314.jdbctest;
 
 import java.sql.*;
 
-import ex_240306.Ex_02_static_1;
 
-public class Ex_01_jdbc_test_2 {
+public class Ex_02_jdbc_test_2_select2 {
 	
 	// JDBC 연결을 위한 인스턴스 준비
 	// 드라이버, 유저명, 패스워드
@@ -40,12 +39,14 @@ public class Ex_01_jdbc_test_2 {
 		// 해당 패키지를 읽기 위해서는 반드시 try-catch를 해야한다
 		try {
 			Class.forName(DRIVER);
+			System.out.println("Class.forName(DRIVER)실행 후 ");
 			
 			// 순서2 . 고정
 			// 선언한 connection 타입의 con을 초기화 하기
 	
-				con = DriverManager.getConnection(URL, USER_ID, USER_PW);
-				
+			con = DriverManager.getConnection(URL, USER_ID, USER_PW);
+
+				System.out.println("DriverManager.getConnection(URL, USER_ID, USER_PW); 실행후");
 				// 순서3 . 값 변경 - select , insert , update, delete
 				// 조회연습중 >> 조회하는 sql전달 명령어 준비
 				String query  = "SELECT ID, PWD, NAME FROM TEST_JAVA";
@@ -53,6 +54,7 @@ public class Ex_01_jdbc_test_2 {
 				// 순서4 
 				// 해당 쿼리를 전달하는 pstmt( PreparedStatement ) 초기화하기
 				pstmt = con.prepareStatement(query);
+				System.out.println("con.prepareStatement(query) 실행후");
 				
 				// 순서 5
 				// DB에서 조회된 결과를 테이블에 담아둔다
@@ -64,10 +66,11 @@ public class Ex_01_jdbc_test_2 {
 				// 순서 6
 				// 반복문으로 데이터를 조회해보기
 				// rs.next = 기준이 0행부터 시작해서 다음행인 1행이 있는지 확인 / 없으면 종료
+				System.out.println("rs.next() 실행 전");
 				while(rs.next()) {
-					String user_id =  rs.getString("ID");
-					String user_pw =  rs.getString("PWD");
-					String user_name =  rs.getString("NAME");
+					String user_id =  rs.getString("id");
+					String user_pw =  rs.getString("pwd");
+					String user_name =  rs.getString("name");
 					System.out.println("ID:"+user_id+" PW:"+user_pw+" NAME:"+user_name);
 					
 				}

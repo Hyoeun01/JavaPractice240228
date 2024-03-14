@@ -24,6 +24,13 @@ public class Ex_01_jdbc_test_1 {
 		 * 
 		 * SELECT * FROM TEST_JAVA;
 		 */
-	}
+		
+		
+		/* 더미데이터 디비 샘플
+		 * insert into TEST_JAVA values ('she','1234','신효은'); 
+		 * insert into TEST_JAVA values ('she1','1234','신효은1'); 
+		 * insert into TEST_JAVA values ('she2','1234','신효은2');
+		 * commit 해주기
+		 */	}
 
 }
