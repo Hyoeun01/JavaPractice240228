@@ -7,7 +7,7 @@ public class Ex_03_FileIO_Byte_input_array_output_file {
 	public static void main(String[] args) {
 		
 		// 읽을 대상 : 배열
-		byte []b = {7,5,30, -4, 2,0};
+		byte []b = {7,5,30, -4, 2,10};
 		
 		try {
 			// 출력 대상 지정
