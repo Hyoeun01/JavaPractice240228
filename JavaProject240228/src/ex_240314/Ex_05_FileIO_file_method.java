@@ -37,12 +37,41 @@ public class Ex_05_FileIO_file_method {
 		// 파일 생성, 폴더 생성, 파일의 메타 정보등 확인가능.
 		// 직접적인 입출력기능은 없다.
 		
-		File f1 = new File("c:\\windows\\system.in");
+		File f1 = new File("c:\\windows\\system.ini");
+		File f2 = new File("c:\\temp_240314");
 		
-		//출력 테스트 
-		listDirectory(f1);
+		// 출력 테스트 
+		listDirectory(f2);
+		
+		// 출력시 오류가 나면 오류코드 읽기 요령 
+		// 현재는 자바라서 파일이 몇개 없지만,
+		// 나중에 프레임워크에서 서버단에서 오류가 발생을하면
+		// 내가 사용한 파일 외에 시스템에서 제공하는 기본 파일이 있다.
+		// 오류코드가 보이면 먼저 내가 작업한 파일이 있는지 여부를 확인
+		
+		System.out.println("==================================");
+		
+		// 파일인지 디렉터리인지 유무 확인, 디렉토리 생성 확인
+		if (f1.isFile()) {
+			System.out.println("파일입니다");
+		} else {
+			System.out.println("폴더입니다");
+		}
+		
+		System.out.println("==================================");
+		// exist() : 존재 유무 확인, mkdir() : 폴더 생성
+		File f3 = new File("c:\\temp_240314");
+		if(f3.isDirectory()) {
+			if(f3.exists()) {
+				File f4 = new File("c:\\temp_240314\\TestFolder");
+				f4.mkdir();
+				// 만들고나서 삭제하기
+				f4.delete();
+				// renameTo(); 이름변경
+				f4.renameTo(new File("c:\\temp_240314\\TestFolder2"));
 				
-		
+			}
+		}
 
 	}
 
