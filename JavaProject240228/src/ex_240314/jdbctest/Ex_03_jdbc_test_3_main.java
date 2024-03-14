@@ -20,7 +20,8 @@ public class Ex_03_jdbc_test_3_main {
 			 * Ex_02_jdbc_test_2_DAO.select();
 			 */
 			
-			Ex_02_jdbc_test_2_DAO.update("123456","효은이름변경");
+			Ex_02_jdbc_test_2_DAO.update("1234","효은", "she2");
+			
 			Ex_02_jdbc_test_2_DAO.select();
 			
 		} catch (ClassNotFoundException e) {

@@ -142,19 +142,21 @@ public class Ex_02_jdbc_test_2_DAO {
 		}
 		
 		
-	public static void update(String pwd, String name) throws SQLException {
+	public static void update(String pwd, String name, String id) throws SQLException {
 		
 		try {
 			Class.forName(DRIVER);
 			// 순서2
 			con = DriverManager.getConnection(URL, USER_ID, USER_PW);
 			// 순서3 , update 부분으로 수정하기
-			String query = "UPDATE TEST_JAVA SET PWD = ?, NAME = ?";
+			// 변경할 id를 선택해야함.
+			String query = "UPDATE TEST_JAVA SET PWD = ?, NAME = ? WHERE ID = ?";
 			// 순서4 // delete시에 동적인 데이터를 추가하는 SETTER함수 필요
 			pstmt = con.prepareStatement(query);
 			// values(?,?,?) 의 첫번째 물음표를 1번으로 가리키고 매개변수를 넘겨받은 데이터를 전달함
 			pstmt.setString(1, pwd);
 			pstmt.setString(2, name);
+			pstmt.setString(3, id);
 			// 순서5
 			int resultNum = pstmt.executeUpdate();
 			System.out.println("레코드가 " + resultNum + "개 수정되었습니다.");
