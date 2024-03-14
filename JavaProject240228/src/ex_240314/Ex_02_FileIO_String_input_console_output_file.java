@@ -21,7 +21,7 @@ public class Ex_02_FileIO_String_input_console_output_file {
 		int c;
 		try {
 			// 출력 대상 경로 지정 필요
-			fileWriter = new FileWriter("c:\\temp\\test_240314.txt");
+			fileWriter = new FileWriter("c:\\temp_240314\\test_240314.txt");
 			
 			// while 반복문으로 메모리에 저장된 문자들을 계속 읽기 
 			while ((c = inputStreamReader.read()) != -1) {
