@@ -17,8 +17,8 @@ public class Ex_02_jdbc_test_2_DAO {
 		private final static String USER_ID = "system";
 		private final static String USER_PW = "oracle";
 
-		static // 연결하기위한 인스턴스 , 고정
-		Connection con = null;
+		// 연결하기위한 인스턴스 , 고정
+		static Connection con = null;
 		// 쿼리를 전달 하기 위한 인스턴스 , 고정
 		static PreparedStatement pstmt = null;
 		// 만약 , 조회를 한다면, 조회한 결과를 담을 테이블 같은 인스턴스, : 조회시 만 필요.
@@ -141,7 +141,7 @@ public class Ex_02_jdbc_test_2_DAO {
 			
 		}
 		
-		
+		// 매개변수의 순서와 setstring의 순서를 잘 맞춰 적을것
 	public static void update(String pwd, String name, String id) throws SQLException {
 		
 		try {
@@ -157,6 +157,7 @@ public class Ex_02_jdbc_test_2_DAO {
 			pstmt.setString(1, pwd);
 			pstmt.setString(2, name);
 			pstmt.setString(3, id);
+			
 			// 순서5
 			int resultNum = pstmt.executeUpdate();
 			System.out.println("레코드가 " + resultNum + "개 수정되었습니다.");
