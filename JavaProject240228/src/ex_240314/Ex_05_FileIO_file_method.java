@@ -9,6 +9,11 @@ public class Ex_05_FileIO_file_method {
 	// 앞에서는 절대경로를 문자열로 계속 전달했고,
 	// 이제는 File 클래스에 경로를 담아서 매개변수에 정의할것.
 	// 그러면 궁금한 폴더 경로의 File 인스턴스만 전달하면 해당 File 인스턴스로 정보를 조회할 수 있다.
+	
+	// 활용 > 프로필 이미지 등 처리할때 File클래스 이용해서
+	// 해당폴더 및 파일등을 임시로 생성 등 활용
+	// 현재 개발연습중이니 로컬(윈도우)  > 리눅스 경로에서 동일하게 적용하면된다.
+	
 	public static void listDirectory(File dir) {
 		
 		System.out.println("입력된 dir의 정보 조회 메서드=======================");
@@ -66,7 +71,7 @@ public class Ex_05_FileIO_file_method {
 				File f4 = new File("c:\\temp_240314\\TestFolder");
 				f4.mkdir();
 				// 만들고나서 삭제하기
-				f4.delete();
+				// f4.delete();
 				// renameTo(); 이름변경
 				f4.renameTo(new File("c:\\temp_240314\\TestFolder2"));
 				
