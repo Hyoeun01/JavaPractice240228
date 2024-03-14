@@ -3,7 +3,7 @@ package ex_240314.jdbctest;
 import java.sql.*;
 
 
-public class Ex_02_jdbc_test_2_select2 {
+public class Ex_02_jdbc_test_2_DAO {
 	
 	// JDBC 연결을 위한 인스턴스 준비
 	// 드라이버, 유저명, 패스워드
@@ -19,11 +19,8 @@ public class Ex_02_jdbc_test_2_select2 {
 	private final static String USER_PW = "oracle";
 	
 	
-	
-	public static void main(String[] args) throws SQLException, ClassNotFoundException {
-		
-		// 인스턴스들도 전부 고정
-		// 연결하기 위한 인스턴스
+	// 조회하는 기능
+	public static void select() throws ClassNotFoundException, SQLException {
 		Connection con = null;
 		
 		// 쿼리를 전달하기 위한 인스턴스
@@ -87,9 +84,20 @@ public class Ex_02_jdbc_test_2_select2 {
 				con.close();
 			}
 		
+	}
+	
+	// insert 기능(매개변수 id, pwd, name)받아서 전달예정
+	
+	// delect기능. 해당 id를 받아서 삭제하기
+	
+	// update는 id제외하고 pwd와 이름 변경
+	
+	
+	
+		
 		
 		
 
 	}
 
-}
+
