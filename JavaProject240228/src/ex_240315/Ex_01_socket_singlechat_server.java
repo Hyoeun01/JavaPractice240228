@@ -67,7 +67,7 @@ public class Ex_01_socket_singlechat_server {
 			// 순서 3: 연결 대기
 			
 			// 서버는 통신 대기를 하기 위한 작업
-			listener = new ServerSocket(999);
+			listener = new ServerSocket(9999);
 			System.out.println("연결을 기다리는 중...");
 			
 			// 순서 4 : 연결 수락
