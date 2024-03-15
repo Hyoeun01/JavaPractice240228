@@ -7,6 +7,7 @@ import javax.swing.table.DefaultTableModel;
  
 //DB 처리
 public class MemberDAO {
+	// data access object : 자바에서 db에 전달하는 기능
  
     private static final String DRIVER
         = "oracle.jdbc.driver.OracleDriver";

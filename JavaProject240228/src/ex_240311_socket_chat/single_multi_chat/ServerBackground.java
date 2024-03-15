@@ -27,6 +27,7 @@ public class ServerBackground {
     // 키 : 닉네임  >> 채팅방 입장시 사용했던 이름
     // 밸류 : DataOutputStream >> 소켓을 이용해서 상대방이 입력받은 내용을 출력해주는 기능
     // clientMap : 모든 사용자의이름, 해당 이름에 대한 출력을 하는 기능인 인스턴스가 들어있음
+    // 똑같은 키를 가질수 없어서 같은 키가되면 덮어쓰기가 된다.
     private Map<String, DataOutputStream> clientMap = new HashMap<String, DataOutputStream>();
  
     public void setGui(ServerGUI gui) {

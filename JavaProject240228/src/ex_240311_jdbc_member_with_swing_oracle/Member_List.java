@@ -9,22 +9,33 @@ import javax.swing.table.DefaultTableModel;
  
 public class Member_List extends JFrame implements MouseListener,ActionListener{
    
+	// 동기화를 지원해주는 컬렉션의 리스트
     Vector v;  
     Vector cols;
+    // 테이블 기능을 지원하는 인스턴스
     DefaultTableModel model;
+    // 표형식
     JTable jTable;
+    // 스크롤
     JScrollPane pane;
+    // 패널 - 창에 추가로 붙이는 공간
     JPanel pbtn;
+    // 버튼
     JButton btnInsert;
        
-   
+   // 생성자
     public Member_List(){
+    	// JFrame의 제목을 설정하는 생성자
         super("회원관리 프로그램  v0.1.1");
         //v=getMemberList();
         //MemberDAO
+        // 데이터 베이스에 접근 및 기본 crud기능 있음
         MemberDAO dao = new MemberDAO();
+        // db내용 조회한 결과 받아두기
         v = dao.getMemberList();
+        
         System.out.println("v="+v);
+        // 각 열의 정보 의미
         cols = getColumn();
        
         //public DefaultTableModel()
@@ -45,7 +56,9 @@ public class Member_List extends JFrame implements MouseListener,ActionListener{
         //JTable(Vector rowData, Vector columnNames)
        
         //jTable = new JTable(v,cols);
+        // 자바에서 지원해주는 표 형식
         jTable = new JTable(model);
+        // 스크롤기능 추가
         pane = new JScrollPane(jTable);
         add(pane);
        
