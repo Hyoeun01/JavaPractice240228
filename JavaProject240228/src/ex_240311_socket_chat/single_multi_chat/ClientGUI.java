@@ -1,13 +1,15 @@
 package ex_240311_socket_chat.single_multi_chat;
 
-
 import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Scanner;
  
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
  
@@ -19,10 +21,25 @@ public class ClientGUI extends JFrame implements ActionListener{
     private ClientBackground client = new ClientBackground();
     private static String nickName;
     
+    // 스크롤 붙이기
+//    JScrollPane scrollPane = new JScrollPane(jta, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+//			JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+    
     public ClientGUI(){
+//    	add(scrollPane, BorderLayout.EAST);
+//    	scrollPane.setBounds(30, 40, 400, 400);
+//    	scrollPane.setVisible(true);
+    	
         
-        add(jta, BorderLayout.CENTER);
-        add(jtf, BorderLayout.SOUTH);
+//        add(jta, BorderLayout.CENTER);
+//        add(jtf, BorderLayout.SOUTH);
+    	
+    	Container container = getContentPane();
+		container.setLayout(new FlowLayout());
+		container.add(jta);
+		container.add(jtf);
+		container.add(new JScrollPane(jta));
+        
         jtf.addActionListener(this);
         
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -54,4 +71,3 @@ public class ClientGUI extends JFrame implements ActionListener{
     }
  
 }
-
