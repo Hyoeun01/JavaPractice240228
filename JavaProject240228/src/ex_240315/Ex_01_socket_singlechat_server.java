@@ -21,6 +21,9 @@ public class Ex_01_socket_singlechat_server {
 		// 데이터를 전달하기 위해서는 file의 IO이 필요하다
 		// 기반 스트림, 보조스트림이 필요
 		
+		// 순서 1 : 선언부분
+		// 재료 : BufferedReader, BufferedWriter, ServerSocket, Socket, Scanner
+		
 		// 문자를 읽기 위한 도구
 		BufferedReader inBufferedReader = null;
 		// 문자를 쓰기 위한 도구
@@ -36,9 +39,17 @@ public class Ex_01_socket_singlechat_server {
 		
 		// 파일의 입출력이거나 통신연결 등은 반드시 예외처리가 필요하다
 		try {
+			
+			// 순서 2: 구현부분
+			// 1) 연결파트, 2) 데이터 전송, 받기
+			
+			// 순서 3: 연결 대기
+			
 			// 서버는 통신 대기를 하기 위한 작업
 			listener = new ServerSocket(999);
 			System.out.println("연결을 기다리는 중...");
+			
+			// 순서 4 : 연결 수락
 			
 			// 연결하기 위해서는 socket의 accept 메소드 이용하기
 			// 클라이언트와 서버가 socket 이라는 인스턴스를 이용해서 통신 예정
@@ -51,6 +62,8 @@ public class Ex_01_socket_singlechat_server {
 			// InputStreamReader : 문자로 읽기 , 보조스트림
 			// socket.getInputStream() :바이트로 읽기 , 기반스트림
 			
+			
+			// 순서 5: 데이터 전송 및 받기위한 인스턴스 초기화
 			// 소켓이 데이터를 읽기위한 용도
 			inBufferedReader = new BufferedReader(new InputStreamReader( socket.getInputStream()));
 			
@@ -60,6 +73,7 @@ public class Ex_01_socket_singlechat_server {
 			// 서버와 클라이언트가 연결이 되었다면 
 			// 반복문으로 계속 데이터를 받기위한 준비를 한다 (무한반복)
 			
+			// 순서6 : 무한반복, 데이터 받기
 			while(true) {
 				
 				// 데이터 읽기작업. inBufferedReader 이용 . 한줄씩 읽기(readLine)
@@ -86,6 +100,8 @@ public class Ex_01_socket_singlechat_server {
 		} catch (Exception e) {
 			// TODO: handle exception
 		} finally {
+			
+			// 순서 7
 			// 자원 반납
 			scanner.close();
 			socket.close();
