@@ -52,5 +52,11 @@ public class README {
 	
 	// 조회해서 자동 증가하는 부분 확인
 	// select * from boarder_java
+	
+	// 화면 구현
+	
+	// 1) 조회하는 화면 >> member_list 참고
+	
+	
 		
  }
