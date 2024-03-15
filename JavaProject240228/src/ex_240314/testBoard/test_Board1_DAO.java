@@ -2,6 +2,8 @@ package ex_240314.testBoard;
 
 import java.sql.*;
 
+// datetime이 실제 시간을 불러오도록 코드
+
 public class test_Board1_DAO {
 
 	private final static String DRIVER = "oracle.jdbc.driver.OracleDriver";
