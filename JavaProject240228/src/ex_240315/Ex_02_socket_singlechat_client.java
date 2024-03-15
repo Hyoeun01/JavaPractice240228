@@ -55,6 +55,9 @@ public class Ex_02_socket_singlechat_client {
 			// 클라이언트와 서버가 socket 이라는 인스턴스를 이용해서 통신 예정
 //			socket = listener.accept(); >> 서버용 작업
 			
+			// 클라이언트는 연결시도하는 로직이 필요.
+			socket = new Socket("localhost", 999);
+			
 			// 데이터를 주고받는 로직
 			
 			// 파일의 IO 이용. 데코레이터 패턴으로 보조스트림이 기반스트림을 감싸는 작업을 한다
