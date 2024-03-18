@@ -1,190 +1,164 @@
 package ex_240315.java_board;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Vector;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import ex_240311_jdbc_member_with_swing_oracle.MemberDTO;
+import ex_240311_jdbc_member_with_swing_oracle.MemberDAO;
+import ex_240311_jdbc_member_with_swing_oracle.MemberProc;
+import ex_240311_jdbc_member_with_swing_oracle.Member_List;
 
-public class Boarder_List {
-	// 데이터베이스 기본 연결하는 구조 그대로 가지고 오기
-	// 게시판의 게시글의 정보를 전체 조회 하는 기능 하나 구현.
-	// 처음에는 콘솔에 출력.
-	// 화면에도 출력.
+public class Boarder_List extends JFrame implements MouseListener, ActionListener {
+	// 동기화를 지원 해주는 컬렉션의 리스트
+	Vector v;
+	Vector cols;
+	// 테이블 기능을 지원해주는 인스턴스
+	DefaultTableModel model;
+	// 표 형식
+	JTable jTable;
+	// 스크롤
+	JScrollPane pane;
+	// 패널은 창에 추가로 붙이는 공간.
+	JPanel pbtn;
+	// 버튼.
+	JButton btnInsert;
 
-	private static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
-	private static final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
+	// 생성자
+	Boarder_List() {
+		// 부모 JFrame의 제목을 설정하는 생성자.
+		super("생자바 게시판 만들기 연습");
+		// v=getMemberList();
+		// MemberDAO
+		// 데이터베이스에 접근 및 crud 기능이 있음.
+		Boarder_DAO dao = new Boarder_DAO();
+		// 디비 내용을 조회한 결과를 받아두기.
+		// 순서 있는 리스트
+		v = dao.getBoarderList();
+		//
+		System.out.println("v=" + v);
+		// 각 열의 정보를 의미.
+		// cols , 벡터 타입의 리스트
+		cols = getColumn();
+		// Vector v; 데이터베이스에서 조회한 전체 게시글들
+		// Vector cols; 헤더명
+		model = new DefaultTableModel(v, cols);
 
-	private static final String USER = "system"; // DB ID
-	private static final String PASS = "oracle"; // DB 패스워드
+		// 자바에서 지원해주는 표 형식.
+		jTable = new JTable(model);
+		// 스크롤 기능을 해당 패널에 추가.
+		pane = new JScrollPane(jTable);
+		// 프레임이라는 창에 , 요소 붙이기.
+		add(pane);
 
-// 게시글의 정보들을 출력하는 리스트 
-	Boarder_List boarder_List;
+		// 버튼을 붙이는 패널 , 캔버스
+		pbtn = new JPanel();
+		// 버튼
+		btnInsert = new JButton("글쓰기");
+		// 버튼을 붙이는 패널 , 버튼 붙이기.
+		pbtn.add(btnInsert);
+		add(pbtn, BorderLayout.NORTH);
 
-	public Boarder_List() {
+		// 이벤트 핸들러 등록,
+		// 인터페이스이고, -> 추상메서드를 가지고 있으니, 필수 재정의 해주기.
+		// 결론, 액션의 역할, 새로운 입력창을 불러오기.
+		jTable.addMouseListener(this); // 리스너 등록
+		btnInsert.addActionListener(this); // 회원가입버튼 리스너 등록
 
-	};
-
-	public Boarder_List(Boarder_List boarder_List) {
-		this.boarder_List = boarder_List;
-		System.out.println("DAO=>" + boarder_List);
+		setSize(600, 200);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	/** DB연결 메소드 */
-	public Connection getConn() {
-		Connection con = null;
+	// JTable의 컬럼, 헤더명
+	public Vector getColumn() {
+		Vector col = new Vector();
+		col.add("아이디");
+		col.add("작성자");
+		col.add("제목");
+		col.add("내용");
+		col.add("등록일");
+		col.add("조회수");
+		return col;
+	}// getColumn
 
-		try {
-			Class.forName(DRIVER); // 1. 드라이버 로딩
-			con = DriverManager.getConnection(URL, USER, PASS); // 2. 드라이버 연결
+	// Jtable 내용 갱신 메서드
+	public void jTableRefresh() {
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		Boarder_DAO dao = new Boarder_DAO();
+		DefaultTableModel model = new DefaultTableModel(dao.getBoarderList(), getColumn());
+		jTable.setModel(model);
 
-		return con;
 	}
 
-	/** 게시판 전체 리스트 출력 */
-// 반환 : 이중 리스트를 반환한다. 리스트안에, 각각의 게시글들이 있다. 
-	public Vector getBoarderList() {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new Boarder_List();
 
-		Vector data = new Vector();
-		// Jtable에 값을 쉽게 넣는 방법 1. 2차원배열 2. Vector 에 vector추가
-
-		Connection con = null; // 연결
-		PreparedStatement ps = null; // 명령
-		ResultSet rs = null; // 결과
-
-		try {
-
-			con = getConn();
-			// 날짜를 기준으로 큰값에서, 작은 값으로 내려가는 내림차순이니,-> 최신순이 먼저옴.
-			// 날짜가 큰값이 최신 날짜임.
-			String sql = "select * from BOARDER_JAVA order by regDate desc";
-			ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
-
-			while (rs.next()) {
-				String id = rs.getString("id");
-				String writer = rs.getString("writer");
-				String subject = rs.getString("subject");
-				String content = rs.getString("content");
-				String regDate = rs.getString("regDate");
-				String viewsCount = rs.getString("viewsCount");
-
-				Vector row = new Vector();
-				row.add(id);
-				row.add(writer);
-				row.add(subject);
-				row.add(content);
-				row.add(regDate);
-				row.add(viewsCount);
-
-				data.add(row);
-				// 결론은 Vector -> 리스트, 리스트 안에 리스트, 이중 리스트 구조.
-				// 연습, 국,영,수 배열 안에 배열.
-			} // while
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return data;
-	}// getMemberList()
-
-	/** DB데이터 다시 불러오기 */
-	public void boarderSelectAll(DefaultTableModel model) {
-
-		Connection con = null;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-
-		try {
-			con = getConn();
-			String sql = "select * from BOARDER_JAVA order by regDate dsc";
-			ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
-
-			// DefaultTableModel에 있는 데이터 지우기
-			for (int i = 0; i < model.getRowCount();) {
-				model.removeRow(0);
-			}
-
-			while (rs.next()) {
-				// 각 행마다, 컬럼들이 6개씩 있음.
-				Object data[] = { rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-						rs.getInt(6), };
-
-				// 테이블에 각행을 각각 추가함.
-				model.addRow(data);
-			}
-
-		} catch (SQLException e) {
-			System.out.println(e + "=> boarderSelectAll fail");
-		} finally {
-
-			if (rs != null)
-				try {
-					rs.close();
-				} catch (SQLException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
-			if (ps != null)
-				try {
-					ps.close();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			if (con != null)
-				try {
-					con.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		}
 	}
 
-	/** 회원 등록 */
-	public boolean insertBoarder(Boarder_DTO dto) {
+	// 버튼 클릭시 이벤트 처리.
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// 버튼을 클릭하면
+		if (e.getSource() == btnInsert) {
+			new Boarder_Proc(this);
 
-		boolean ok = false;
-
-		Connection con = null; // 연결
-		PreparedStatement ps = null; // 명령
-
-		try {
-
-			con = getConn();
-			String sql = "insert into BOARDER_JAVA(" + "id,writer,subject,content,regDate,viewsCount )"
-					+ "values(boarder_seq.NEXTVAL,?,?,?,?,?)";
-
-			ps = con.prepareStatement(sql);
-			ps.setString(1, dto.getWriter());
-			ps.setString(2, dto.getSubject());
-			ps.setString(3, dto.getContent());
-			ps.setString(4, dto.getRegDate());
-			ps.setInt(5, dto.getViewsCount());
-
-			int r = ps.executeUpdate(); // 실행 -> 저장
-
-			if (r > 0) {
-				System.out.println("글쓰기 성공");
-				ok = true;
-			} else {
-				System.out.println("글쓰기 실패");
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 
-		return ok;
-	}// insertMmeber
-	
+	}
+
+	// 리스트 -> 한 게시글 선택 -> 새로운 창 나오고
+	// 그 창에 -> 하나의 게시글 정보를 불러오기 -> 해당 화면에 넣기.
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// mouseClicked 만 사용
+		// 클릭시 해당 번호를 가지고 온다.
+		int r = jTable.getSelectedRow();
+		System.out.println("클릭시 클릭된 행번호 확인: " + r);
+		// 테이블에서 선택된 행의 첫번째 컬럼의 값을 가져오는데, 반환 타입 Object, 
+		// Object -> Integer -> int , 형변환
+		int id = (Integer) jTable.getValueAt(r, 0);
+		System.out.println("클릭시 클릭된 id 조회: " + id);
+		// System.out.println("id="+id);
+		// 인자, 선택된 게시글의 아이디와, Boarder_List 타입의 인스턴스를 전달(this)
+		// Boarder_Proc: 글쓰기 사용했던 창. 이 화면을 재사용을해서, 
+		// 수정 폼으로도 사용하고 있음. 
+		Boarder_Proc mem = new Boarder_Proc(id, this); // 아이디를 인자로 수정창 생성
+
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

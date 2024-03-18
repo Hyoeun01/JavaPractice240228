@@ -1,9 +1,29 @@
 package ex_240315.java_board;
 
 
-import java.awt.*;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
-import javax.swing.*;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import ex_240311_jdbc_member_with_swing_oracle.MemberDAO;
 import ex_240311_jdbc_member_with_swing_oracle.MemberDTO;
@@ -45,6 +65,72 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 		this.boarder_List = boarder_List;
 
 	}// 생성자
+	
+	// 생성자, 매개변수 2개, 
+	public Boarder_Proc(int id,Boarder_List boarder_List){ // 수정/삭제용 생성자
+	       createUI();
+	       // 수정하기 위한 화면으로 사용해서, 글쓰기 버튼 기능 비활성화, 
+	       btnInsert.setEnabled(false);
+	       // 화면에서 안보이게 설정
+	       btnInsert.setVisible(false);
+	       this.boarder_List = boarder_List;
+	      
+	      
+	       System.out.println("id="+id);
+	      
+	       Boarder_DAO dao = new Boarder_DAO();
+	       // 하나의 게시글을 조회를 하는 기능. 
+	       Boarder_DTO vMem = dao.getBoarderDTO(id);
+//	       viewData(vMem);
+	      
+	      
+	   }//id를 가지고 생성
+	
+	//MemberDTO 의 회원 정보를 가지고 화면에 셋팅해주는 메소드
+	// 하나의 게시글 정보를 가지고, 화면에 넣는 작업.
+	
+//	   private void viewData(MemberDTO vMem){
+//	      
+//	       String id = vMem.getId();
+//	       String pwd = vMem.getPwd();
+//	       String name = vMem.getName();
+//	       String tel = vMem.getTel();
+//	       String addr = vMem.getAddr();
+//	       String birth = vMem.getBirth();
+//	       String job = vMem.getJob();
+//	       String gender = vMem.getGender();
+//	       String email= vMem.getEmail();
+//	       String intro = vMem.getIntro();    
+//	      
+//	       //화면에 세팅
+//	       tfId.setText(id);
+//	       tfId.setEditable(false); //편집 안되게
+//	       pfPwd.setText(""); //비밀번호는 안보여준다.
+//	       tfName.setText(name);
+//	       String[] tels = tel.split("-");
+//	       tfTel1.setText(tels[0]);
+//	       tfTel2.setText(tels[1]);
+//	       tfTel3.setText(tels[2]);
+//	       tfAddr.setText(addr);
+//	      
+//	       tfYear.setText(birth.substring(0, 4));
+//	       tfMonth.setText(birth.substring(4, 6));
+//	       tfDate.setText(birth.substring(6, 8));
+//	      
+//	       cbJob.setSelectedItem(job);
+//	      
+//	      
+//	       if(gender.equals("M")){
+//	           rbMan.setSelected(true);
+//	       }else if(gender.equals("W")){
+//	           rbWoman.setSelected(true);
+//	       }
+//	      
+//	       tfEmail.setText(email);
+//	       taIntro.setText(intro);
+//	  
+//	      
+//	   }//viewData
 
 	private void createUI() {
 		this.setTitle("글쓰기 폼");
@@ -164,13 +250,13 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 
 		if (ok) {
 
-			JOptionPane.showMessageDialog(this, "가입이 완료되었습니다.");
+			JOptionPane.showMessageDialog(this, "글쓰기 성공.");
 			// 종료. 
 			dispose();
 
 		} else {
 
-			JOptionPane.showMessageDialog(this, "가입이 정상적으로 처리되지 않았습니다.");
+			JOptionPane.showMessageDialog(this, "글쓰기 실패.");
 		}
 
 	}// insertBoarder
@@ -187,12 +273,23 @@ public class Boarder_Proc extends JFrame implements ActionListener {
 	       String writer = tfWriter.getText();
 	       String subject = tfSubject.getText();
 	       String content = tfContent.getText();
+	       // 등록 날짜, 자동
+	       String regDate = LocalDate.now().toString();
+	       String regTime = LocalTime.now().toString();
+	       String regDateTimeString = regDate + regTime ;
+//	       String regDate2 = regDate.toString();
+	       // 조회수 카운트, 자동
+	       int viewsCount = 0;
 	     
 	      
+	       // 입력 받은 값을 넣는 작업. 
 	       //dto : 게시글 하나 작성하기 위해 필요한 내용을 담고 있다.
 	       dto.setWriter(writer);
 	       dto.setSubject(subject);
 	       dto.setContent(content);
+	       // 우리가 자동으로 넣어 주기로 했었음. 
+	       dto.setRegDate(regDateTimeString);
+	       dto.setViewsCount(viewsCount);
 	       
 	       // 임시로 모델 박스에, 화면에서 입력받은 내용을 메모리 임시 저장. 
 	      

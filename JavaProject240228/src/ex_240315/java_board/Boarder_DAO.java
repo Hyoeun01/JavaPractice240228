@@ -1,7 +1,10 @@
 package ex_240315.java_board;
 
-import java.sql.*;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
@@ -51,6 +54,7 @@ public class Boarder_DAO {
 // 반환 : 이중 리스트를 반환한다. 리스트안에, 각각의 게시글들이 있다. 
 	public Vector getBoarderList() {
 
+		// 임시 데이터를 담을 저장 공간(메모리에 담아둠)
 		Vector data = new Vector();
 		// Jtable에 값을 쉽게 넣는 방법 1. 2차원배열 2. Vector 에 vector추가
 
@@ -65,8 +69,12 @@ public class Boarder_DAO {
 			// 날짜가 큰값이 최신 날짜임.
 			String sql = "select * from BOARDER_JAVA order by regDate desc";
 			ps = con.prepareStatement(sql);
+			// 메서드 가 실행이되면, 데이터베이스 조회한 내용이 rs 인스턴스에 임시로 저장됨. 
+			// 저장이 되는 포맷은 마치 엑셀 표와 비슷하다고 생각하시면됨.
 			rs = ps.executeQuery();
 
+			// rs 는 0행에서 대기하고 있다가, next 만나면, 다음행 1행으로 넘어가
+			// 각 컬럼별로 데이터를 가지고 오는 역할. 
 			while (rs.next()) {
 				int id = rs.getInt("id");
 				String writer = rs.getString("writer");
@@ -98,6 +106,7 @@ public class Boarder_DAO {
 
 		Connection con = null;
 		PreparedStatement ps = null;
+		// 조회시 만 사용할 예정. 
 		ResultSet rs = null;
 
 		try {
@@ -149,10 +158,11 @@ public class Boarder_DAO {
 	}
 
 	/** 게시글 등록 */
-	// Boarder_DTO : 하나의 게시글의 모델. 각 글을 쓸 때 dto에 하나씩 담긴다
+	// Boarder_DTO dto : 하나의 게시글의 모델, 
+	// 각 글을 쓸 때, Boarder_DTO dto 하나씩 사용이됨. 
 	public boolean insertBoarder(Boarder_DTO dto) {
 
-		// 상태 변수로 사용중. 글쓰기 메서드가 완료가 되면 true로 변경 예정
+		// 상태 변수로 사용 중, 글쓰기 메서드가 완료가 되면, true 변경 할 예정. 
 		boolean ok = false;
 
 		Connection con = null; // 연결
@@ -163,7 +173,7 @@ public class Boarder_DAO {
 			con = getConn();
 			String sql = "insert into BOARDER_JAVA(" + "id,writer,subject,content,regDate,viewsCount )"
 					+ "values(boarder_seq.NEXTVAL,?,?,?,?,?)";
-
+			// dto 에 각 게시글의 내용들이 담겨 있는 모델 박스라 생각하기.
 			ps = con.prepareStatement(sql);
 			ps.setString(1, dto.getWriter());
 			ps.setString(2, dto.getSubject());
@@ -171,6 +181,9 @@ public class Boarder_DAO {
 			ps.setString(4, dto.getRegDate());
 			ps.setInt(5, dto.getViewsCount());
 
+			// c:create => insert ,u = update ,d = delete
+			// executeUpdate
+			// 게시글을 정상 동작, 하나 의 글 작성 성공하면, 1을 리턴.
 			int r = ps.executeUpdate(); // 실행 -> 저장
 
 			if (r > 0) {
@@ -187,4 +200,43 @@ public class Boarder_DAO {
 		return ok;
 	}// insertMmeber
 	
-}
+	//하나의 게시글 정보 가져오는 기능
+
+    public Boarder_DTO getBoarderDTO(int id){
+       
+    	// 임시로 메모리 담아둘 공간. 
+    	Boarder_DTO dto = new Boarder_DTO();
+       
+        Connection con = null;       //연결
+        PreparedStatement ps = null; //명령
+        ResultSet rs = null;         //결과
+       
+        try {
+           
+            con = getConn();
+            String sql = "select * from BOARDER_JAVA where id=?";
+            // sql 를 전달하는 기능. 
+            ps = con.prepareStatement(sql);
+            // ? 동적 매개변수에 값을 넣기
+            ps.setInt(1, id);
+           // 조회시 사용하는 메서드
+            rs = ps.executeQuery();
+           // 하나의 게시글을 받아와서, 각 컬럼을 반복문으로 순회하면서, 값을 가져오기. 
+            // 가져온 데이터를, dto 라는 게시글을 담는 박스에 담기. 
+            if(rs.next()){
+                dto.setId(rs.getInt("id"));
+                dto.setWriter(rs.getString("writer"));
+                dto.setSubject(rs.getString("subject"));
+                dto.setContent(rs.getString("content"));
+                dto.setRegDate(rs.getString("regDate"));
+                dto.setViewsCount(rs.getInt("viewsCount"));
+               
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }      
+       
+        return dto;    
+    }
+
+}}
