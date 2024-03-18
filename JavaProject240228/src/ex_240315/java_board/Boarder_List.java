@@ -1,5 +1,6 @@
 package ex_240315.java_board;
 
+
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -121,6 +122,9 @@ public class Boarder_List extends JFrame implements MouseListener, ActionListene
 	// 그 창에 -> 하나의 게시글 정보를 불러오기 -> 해당 화면에 넣기.
 	// 상세 보기 순서
 	// 순서1 , 
+	
+	// 업데이트 순서1,
+	
 	// 게시판 목록에서, 클릭시 이벤트 처리
 	@Override
 	public void mouseClicked(MouseEvent e) {
