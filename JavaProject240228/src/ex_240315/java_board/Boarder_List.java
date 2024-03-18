@@ -1,5 +1,4 @@
 package ex_240315.java_board;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 import ex_240311_jdbc_member_with_swing_oracle.MemberDTO;
 
-public class Boarder_DAO {
+public class Boarder_List {
 	// 데이터베이스 기본 연결하는 구조 그대로 가지고 오기
 	// 게시판의 게시글의 정보를 전체 조회 하는 기능 하나 구현.
 	// 처음에는 콘솔에 출력.
@@ -26,11 +25,11 @@ public class Boarder_DAO {
 // 게시글의 정보들을 출력하는 리스트 
 	Boarder_List boarder_List;
 
-	public Boarder_DAO() {
+	public Boarder_List() {
 
 	};
 
-	public Boarder_DAO(Boarder_List boarder_List) {
+	public Boarder_List(Boarder_List boarder_List) {
 		this.boarder_List = boarder_List;
 		System.out.println("DAO=>" + boarder_List);
 	}
