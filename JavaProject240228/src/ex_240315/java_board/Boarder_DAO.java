@@ -1,10 +1,7 @@
 package ex_240315.java_board;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+
 import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
@@ -71,12 +68,12 @@ public class Boarder_DAO {
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				String id = rs.getString("id");
+				int id = rs.getInt("id");
 				String writer = rs.getString("writer");
 				String subject = rs.getString("subject");
 				String content = rs.getString("content");
 				String regDate = rs.getString("regDate");
-				String viewsCount = rs.getString("viewsCount");
+				int viewsCount = rs.getInt("viewsCount");
 
 				Vector row = new Vector();
 				row.add(id);
@@ -151,9 +148,11 @@ public class Boarder_DAO {
 		}
 	}
 
-	/** 회원 등록 */
+	/** 게시글 등록 */
+	// Boarder_DTO : 하나의 게시글의 모델. 각 글을 쓸 때 dto에 하나씩 담긴다
 	public boolean insertBoarder(Boarder_DTO dto) {
 
+		// 상태 변수로 사용중. 글쓰기 메서드가 완료가 되면 true로 변경 예정
 		boolean ok = false;
 
 		Connection con = null; // 연결
