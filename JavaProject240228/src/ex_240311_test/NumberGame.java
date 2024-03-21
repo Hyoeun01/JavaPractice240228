@@ -1,4 +1,4 @@
-package ex_240311;
+package ex_240311_test;
 
 import java.util.Scanner;
 
