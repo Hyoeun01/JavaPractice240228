@@ -646,7 +646,7 @@ public void clickRbean(String befor_rbean,String rbean,boolean flag_rbean){//팥
 }//clickRbean
 
 public void clickCmilk(String befor_cmilk,String cmilk,boolean flag_cmilk){//연유추가 관리
-	if(flag_cmilk){
+	if(flag_cmilk){ // 상태변수 - 연유 추가한변수 : 추가해서 해보기//
 		//두번이상
 		switch (cmilk) {
 		case "연유추가":
