@@ -29,12 +29,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 
 public class InventoryUI extends JFrame {
-
-
 	
 	Container container = getContentPane();
-	
-
 	
 	Panel pal =new Panel();
 	coffeedao dao = new coffeedao();
