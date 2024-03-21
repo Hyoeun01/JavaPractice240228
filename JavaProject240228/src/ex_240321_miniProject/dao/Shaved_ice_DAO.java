@@ -1,4 +1,4 @@
-package ex_240318_miniProject.dao;
+package ex_240321_miniProject.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,17 +7,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 
-import ex_240318_miniProject.bean.*;
+import ex_240321_miniProject.shaved_ice.*;
 
+public class Shaved_ice_DAO {
 
-public class coffeedao {
 	private String driver = "oracle.jdbc.driver.OracleDriver" ;
 	private String url = "jdbc:oracle:thin:@localhost:1521:xe" ;
 	private String username = "system" ;
 	private String password = "oracle" ;
 	private Connection conn = null ;
 	
-	public coffeedao() {
+	
+	public Shaved_ice_DAO() {
 		try {
 			Class.forName(driver) ;			
 		} catch (ClassNotFoundException e) {
@@ -45,24 +46,23 @@ public class coffeedao {
 		}		
 	}
 
-	public int coffeeadd(Coffee bean){//서버에 판매정보 저장
+	public int shaved_iceAdd(Shaved_ice ice){//서버에 판매정보 저장
 		int result =-1;
 		
 		PreparedStatement pstmt =null;
 		ResultSet rs = null;
-		String sql = "insert into coffee(coffeename,coffeesize,shot,coffeetemp,price,takeout)values(?,?,?,?,?,?)";
+		String sql = "insert into shaved_ice(shaved_icename,shaved_icesize,cmilk,rbean,price,takeout)values(?,?,?,?,?,?)";
 	
 		try {
 								
 			conn = getConnection();
 			pstmt= conn.prepareStatement(sql);
-			pstmt.setString(1, bean.getName());
-			pstmt.setString(2, bean.getSize());
-			pstmt.setString(3, bean.getShot());
-			pstmt.setString(4, bean.getTemp());
-			
-			pstmt.setInt(5, bean.getPrice());
-			pstmt.setString(6, bean.getTakeout());
+			pstmt.setString(1, ice.getName());
+			pstmt.setString(2, ice.getSize());
+			pstmt.setString(3, ice.getCmilk());
+			pstmt.setString(4, ice.getRbean());
+			pstmt.setInt(5, ice.getPrice());
+			pstmt.setString(6, ice.getTakeout());
 			
 			result = pstmt.executeUpdate();
 			conn.setAutoCommit(false);
@@ -87,14 +87,14 @@ public class coffeedao {
 		}
 		
 		return result;
-	}//coffeeadd
+	}//shaved_icdAdd
 	
 	
 	public int stockorder(Stock stock){// 이건재고 데이터 업데이트
 		int result =0;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "update stock set wondu=?, milk=?, sirup=?, berry=?, mango=?, green=?, black=?, choco=?" ;
+		String sql = "update stock set milk=?, cmilk=?, rbean=?, bean=?, berry=?, mango=?, green=?, choco=?" ;
 		
 		try {
 			conn = getConnection() ;
@@ -102,13 +102,13 @@ public class coffeedao {
 
 			pstmt = conn.prepareStatement(sql); 
 						
-			pstmt.setInt(1, stock.getWondu());
-			pstmt.setInt(2, stock.getMilk());
-			pstmt.setInt(3, stock.getSirup());
-			pstmt.setInt(4, stock.getBerry());
-			pstmt.setInt(5, stock.getMango());
-			pstmt.setInt(6, stock.getGreen());
-			pstmt.setInt(7, stock.getBlack());
+			pstmt.setInt(1, stock.getMilk());
+			pstmt.setInt(2, stock.getCmilk());
+			pstmt.setInt(3, stock.getRbean());
+			pstmt.setInt(4, stock.getBean());
+			pstmt.setInt(5, stock.getBerry());
+			pstmt.setInt(6, stock.getMango());
+			pstmt.setInt(7, stock.getGreen());
 			pstmt.setInt(8, stock.getChoco());
 								
 			result = pstmt.executeUpdate() ;
@@ -142,11 +142,11 @@ public class coffeedao {
 	
 	
 	
-	public  Vector<Coffee> Getsellcount(){// 오늘 판매된 음료
+	public  Vector<Shaved_ice> Getsellcount(){// 오늘 판매된 음료
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;
-		String sql = "select coffeename , count(*)  from coffee group by  coffeename   order by count(*) desc" ;
-		Vector<Coffee> lists = new Vector<Coffee>();
+		String sql = "select shaved_icename , count(*)  from shaved_ice group by shaved_icename  order by count(*) desc" ;
+		Vector<Shaved_ice> lists = new Vector<Shaved_ice>();
 		try {
 			conn = getConnection() ;
 			pstmt = conn.prepareStatement(sql) ; 
@@ -154,11 +154,11 @@ public class coffeedao {
 			rs = pstmt.executeQuery() ;
 			
 			while(rs.next()){
-				Coffee coffee = new Coffee() ;
-				coffee.setName(rs.getString("coffeename"));
-				coffee.setPrice( rs.getInt("count(*)") ); 
+				Shaved_ice shaved_ice = new Shaved_ice() ;
+				shaved_ice.setName(rs.getString("coffeename"));
+				shaved_ice.setPrice( rs.getInt("count(*)") ); 
 				
-				lists.add( coffee ) ;
+				lists.add( shaved_ice ) ;
 			}
 			
 		} catch (Exception e) {
@@ -191,13 +191,13 @@ public class coffeedao {
 			while(rs.next()){
 				stock = new Stock() ;
 				
-				stock.setWondu(rs.getInt("wondu"));
 				stock.setMilk(rs.getInt("milk"));
-				stock.setSirup(rs.getInt("sirup"));
+				stock.setCmilk(rs.getInt("cmilk"));
+				stock.setRbean(rs.getInt("rbean"));
+				stock.setBean(rs.getInt("bean"));
 				stock.setBerry(rs.getInt("berry"));
 				stock.setMango(rs.getInt("mango"));
 				stock.setGreen(rs.getInt("green"));
-				stock.setBlack(rs.getInt("black"));
 				stock.setChoco(rs.getInt("choco"));
 				
 			}
@@ -226,12 +226,12 @@ public class coffeedao {
 	}//stockorder
 	
 	*/
-	public Vector<Coffee> GetAllSellList() {//db에서 데이터를 받아서 벡터로 반환하는 메소드
+	public Vector<Shaved_ice> GetAllSellList() {//db에서 데이터를 받아서 벡터로 반환하는 메소드
 		//모든 상품 목록들을 리턴한다.
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;
 		String sql = "select * from coffee" ;
-		Vector<Coffee> lists = new Vector<Coffee>();
+		Vector<Shaved_ice> lists = new Vector<Shaved_ice>();
 		try {
 			conn = getConnection() ;
 			pstmt = conn.prepareStatement(sql) ; 
@@ -239,15 +239,15 @@ public class coffeedao {
 			rs = pstmt.executeQuery() ;
 			
 			while(rs.next()){
-				Coffee coffee = new Coffee() ;
-				coffee.setName(rs.getString("coffeename"));
-				coffee.setSize(rs.getString("coffeesize"));
-				coffee.setShot(rs.getString("shot"));
-				coffee.setTemp(rs.getString("coffeetemp"));
-				coffee.setPrice(rs.getInt("price"));
-				coffee.setTakeout(rs.getString("takeout"));
+				Shaved_ice shaved_ice = new Shaved_ice() ;
+				shaved_ice.setName(rs.getString("shaved_icename"));
+				shaved_ice.setSize(rs.getString("shaved_icesize"));
+				shaved_ice.setCmilk(rs.getString("cmilk"));
+				shaved_ice.setRbean(rs.getString("rbean"));
+				shaved_ice.setPrice(rs.getInt("price"));
+				shaved_ice.setTakeout(rs.getString("takeout"));
 				
-				lists.add( coffee ) ;
+				lists.add( shaved_ice ) ;
 			}
 			
 		} catch (Exception e) {
@@ -267,57 +267,57 @@ public class coffeedao {
 		
 	
 	
-	public Object[][] makeArr(Vector<Coffee> lists){//벡터를 받아서 전체를 2차원 배열로 만들어주는 메소드
+	public Object[][] makeArr(Vector<Shaved_ice> lists){//벡터를 받아서 전체를 2차원 배열로 만들어주는 메소드
 		
-		Object [][] coffeearr = new Object [lists.size()][6]; 
+		Object [][] shaved_icearr = new Object [lists.size()][6]; 
 								
 			for(int i=0; i<lists.size();i++){
 			
-				coffeearr[i][0]=lists.get(i).getName();
-				coffeearr[i][1]=lists.get(i).getSize();
-				coffeearr[i][2]=lists.get(i).getShot();
-				coffeearr[i][3]=lists.get(i).getTemp();
-				coffeearr[i][4]=lists.get(i).getPrice();
-				coffeearr[i][5]=lists.get(i).getTakeout();
+				shaved_icearr[i][0]=lists.get(i).getName();
+				shaved_icearr[i][1]=lists.get(i).getSize();
+				shaved_icearr[i][2]=lists.get(i).getCmilk();
+				shaved_icearr[i][3]=lists.get(i).getRbean();
+				shaved_icearr[i][4]=lists.get(i).getPrice();
+				shaved_icearr[i][5]=lists.get(i).getTakeout();
 			
 			}	
 		
-		return coffeearr;
+		return shaved_icearr;
 		
 	}//makeArr
 	
 	
 	
-	public Object[][] makelistArr(Vector<Coffee> lists){//벡터를 받아서 판대량을 2차원 배열로 만들어주는 메소드
+	public Object[][] makelistArr(Vector<Shaved_ice> lists){//벡터를 받아서 판대량을 2차원 배열로 만들어주는 메소드
 		
-		Object [][] coffeearr = new Object [lists.size()][2]; 
+		Object [][] shaved_icearr = new Object [lists.size()][2]; 
 				
 				
 			for(int i=0; i<lists.size();i++){
-				coffeearr[i][0]=lists.get(i).getName();
-				coffeearr[i][1]=lists.get(i).getPrice();
+				shaved_icearr[i][0]=lists.get(i).getName();
+				shaved_icearr[i][1]=lists.get(i).getPrice();
 			}	
 		
 			
-		return coffeearr;
+		return shaved_icearr;
 		
 	}//makeArr
 
 	
 	public Object[][] makestocklistArr(Stock lists){//스탁을 받아서 오브젝트로 만들어줌
 		
-		Object [][] coffeearr = new Object [1][8]; 
+		Object [][] shaved_icearr = new Object [1][8]; 
 				
-			coffeearr[0][0]=lists.getWondu();
-			coffeearr[0][1]=lists.getMilk();
-			coffeearr[0][2]=lists.getSirup();
-			coffeearr[0][3]=lists.getBerry();
-			coffeearr[0][4]=lists.getMango();
-			coffeearr[0][5]=lists.getGreen();
-			coffeearr[0][6]=lists.getBlack();
-			coffeearr[0][7]=lists.getChoco();
+		shaved_icearr[0][0]=lists.getMilk();
+		shaved_icearr[0][1]=lists.getCmilk();
+		shaved_icearr[0][2]=lists.getRbean();
+		shaved_icearr[0][3]=lists.getBean();
+		shaved_icearr[0][4]=lists.getBerry();
+		shaved_icearr[0][5]=lists.getMango();
+		shaved_icearr[0][6]=lists.getGreen();
+		shaved_icearr[0][7]=lists.getChoco();
 			
-		return coffeearr;
+		return shaved_icearr;
 		
 	}//makestocklistArr
 	

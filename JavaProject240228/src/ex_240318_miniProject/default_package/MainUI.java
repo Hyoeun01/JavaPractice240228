@@ -139,7 +139,7 @@ public class MainUI {
 		btnNewButton_2.setBounds(350, 37, 100, 70);
 		panel.add(btnNewButton_2);
 		
-		JButton btnNewButton_3 = new JButton("\uBC14\uB2D0\uB77C\uB77C\uB5BC");
+		JButton btnNewButton_3 = new JButton("바닐라라떼");
 		btnNewButton_3 .setBackground(new Color(196,222,207));
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
